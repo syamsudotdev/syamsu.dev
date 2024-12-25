@@ -36,7 +36,7 @@ export default function Page({ loaderData }: Route.ComponentProps) {
   return (
     <div className="mt-[68px] mx-[16px]">
       <h1 className="font-bold text-xl">Posts</h1>
-      <ul className="mx-[16px] list-disc text-base">
+      <ul className="mx-[16px] list-disc text-[#E8F1F2]">
         {loaderData.posts.map(post => (
           <li key={post.link}>
             <Link to={`/posts/${post.link}`}>{post.title}</Link>

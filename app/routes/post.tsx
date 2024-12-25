@@ -42,7 +42,11 @@ export default function Page({ loaderData }: Route.ComponentProps) {
           <h2 className="font-bold text-lg my-2">{children}</h2>
         ),
         img: ({ src, alt }) => (
-          <img src={src} alt={alt} className="rounded mx-auto my-4" />
+          <img
+            src={src}
+            alt={alt}
+            className="rounded mx-auto my-4 max-w-[600px]"
+          />
         ),
         a: ({ href, children }) => (
           <Link to={href || ''} className="underline">
@@ -55,7 +59,7 @@ export default function Page({ loaderData }: Route.ComponentProps) {
           return match ? (
             <SyntaxHighlighter
               {...(rest as React.ComponentProps<typeof SyntaxHighlighter>)}
-              className="rounded"
+              className="rounded text-base"
               showLineNumbers
               language={match[1]}
               style={PrismStyle}
@@ -69,7 +73,7 @@ export default function Page({ loaderData }: Route.ComponentProps) {
           );
         },
       }}
-      className="mt-[68px] mx-[16px] xl:mx-[32px] flex flex-col"
+      className="mt-[68px] mx-[16px] xl:mx-[32px] flex flex-col text-[#E8F1F2]"
     >
       {loaderData.post}
     </Markdown>

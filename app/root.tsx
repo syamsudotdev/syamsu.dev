@@ -33,7 +33,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body className="flex relative flex-col font-sans text-white select-none bg-slate-800">
+      <body className="flex relative flex-col font-sans text-white select-none bg-[#1E363B]">
         <Header />
         {children}
         <footer className="flex px-4 py-6 w-full border-t-2 border-white xl:border-px xl:px-6">

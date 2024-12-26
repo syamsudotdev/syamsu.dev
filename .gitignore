@@ -5,3 +5,9 @@
 build
 node_modules
 *.tsbuildinfo
+*.tar.gz
+/public/meta/*
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright

@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 
+# Regenerate meta images
+./scripts/generate-meta-images.sh
+
 # Delete file if exists
 rm -f syamsudotdev-latest.tar.gz
 

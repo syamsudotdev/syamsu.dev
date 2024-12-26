@@ -1,13 +1,13 @@
-FROM node:20-alpine as dependencies-env
+FROM node:20-alpine AS dependencies-env
 RUN npm i -g pnpm
 COPY . /app
 
-FROM dependencies-env as development-dependencies-env
+FROM dependencies-env AS development-dependencies-env
 COPY ./package.json pnpm-lock.yaml /app/
 WORKDIR /app
 RUN pnpm i --frozen-lockfile
 
-FROM dependencies-env as production-dependencies-env
+FROM dependencies-env AS production-dependencies-env
 COPY ./package.json pnpm-lock.yaml /app/
 WORKDIR /app
 RUN pnpm i --prod --frozen-lockfile

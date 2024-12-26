@@ -13,7 +13,7 @@ layout = "layouts/blog.tsx"
 # Gagal Menjalankan Emulator Android di Linux
 
 ![Android Emulator](/images/emulator.png)
-Malam ini, saya melakukan **update development tools** Android. Dan sebuah keanehan terjadi. Selesai melakukan **update, emulator** Android saya gagal jalan. Hmm, ini mengingatkan saya pada **error** yang pernah saya alami. Saya pernah menemukan penyebabnya dengan cara menjalankan emulator dari **command-line.<!--more--> **Sebagai programmer, pastinya hal ini menjadikan kita gelisah dan mengganggu pikiran untuk melanjutkan kegiatan pemrograman.
+Malam ini, saya melakukan **update development tools** Android. Dan sebuah keanehan terjadi. Selesai melakukan **update, emulator** Android saya gagal jalan. Hmm, ini mengingatkan saya pada **error** yang pernah saya alami. Saya pernah menemukan penyebabnya dengan cara menjalankan emulator dari **command-line**.<!--more--> Sebagai programmer, pastinya hal ini menjadikan kita gelisah dan mengganggu pikiran untuk melanjutkan kegiatan pemrograman.
 
 Tenang, sebenarnya solusinya sederhana, kok. Langkah pertama, kita perlu tahu terlebih dulu apa nama AVD **(Android Virtual Device)** yang akan kita jalankan.
 

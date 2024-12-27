@@ -28,12 +28,18 @@ test(`screenshot posts`, async ({ context }) => {
 
   for (const post of posts) {
     const page = await context.newPage();
-    await page.goto(`/posts/${post.link}`);
-    await page.waitForLoadState('domcontentloaded');
-    await page.screenshot({
-      path: `${baseScreenshotDir}/${post.link}.jpeg`,
-      quality: 100,
-      clip: { x: 0, y: 0, width: 600, height: 300 },
-    });
+    try {
+      await page.goto(`/posts/${post.link}`);
+      await page.waitForLoadState('domcontentloaded');
+      await page.screenshot({
+        path: `${baseScreenshotDir}/${post.link}.jpeg`,
+        quality: 100,
+        clip: { x: 0, y: 0, width: 600, height: 300 },
+      });
+    } catch (error) {
+      console.error(`Failed to screenshot ${post.link}:`, error);
+    } finally {
+      await page.close();
+    }
   }
 });

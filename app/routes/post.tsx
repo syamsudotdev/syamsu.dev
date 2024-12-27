@@ -45,6 +45,7 @@ export async function loader({ params }: Route.LoaderArgs) {
     .slice(1)
     .join(' ')
     .trim()
+    .replace('<!--more-->', '')
     .substring(0, 200);
   const post = content.replace('<!--more-->', '');
   return { title, short, post };

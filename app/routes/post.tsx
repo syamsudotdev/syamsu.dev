@@ -4,8 +4,6 @@ import fs from 'node:fs/promises';
 import remarkFrontmatter from 'remark-frontmatter';
 import { remark } from 'remark';
 import { Link } from 'react-router';
-import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { nightOwl as PrismStyle } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { buildOpenGraphTwitterMeta } from '~/loaders/og-twitter';
 import stripMarkdown from 'strip-markdown';
 
@@ -75,19 +73,11 @@ export default function Page({ loaderData }: Route.ComponentProps) {
         p: ({ children }) => <p className="mb-4 has-[img]:mb-0">{children}</p>,
         code(props) {
           const { children, className, ...rest } = props;
-          const match = /language-(\w+)/.exec(className || '');
-          return match ? (
-            <SyntaxHighlighter
-              {...(rest as React.ComponentProps<typeof SyntaxHighlighter>)}
-              className="rounded text-base"
-              showLineNumbers
-              language={match[1]}
-              style={PrismStyle}
+          return (
+            <code
+              {...rest}
+              className={`${className} px-[16px] py-[8px] bg-slate-800 w-full block`}
             >
-              {String(children).replace(/\n$/, '')}
-            </SyntaxHighlighter>
-          ) : (
-            <code {...rest} className={className}>
               {children}
             </code>
           );

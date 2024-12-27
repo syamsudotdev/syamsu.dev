@@ -13,11 +13,7 @@ layout = "layouts/blog.tsx"
 
 ![Playwright Logo](/images/playwright-logo.svg)
 
-# Leveraging Playwright to Generate Open Graph Image
-
-When implementing social media cards for a website, creating and maintaining Open Graph images for each page can be time-consuming. This article demonstrates how to automate this process using Playwright - typically an end-to-end testing tool - to programmatically generate consistent social media preview images.
-
-I was implementing meta tags for twitter [summary large card](https://developer.x.com/en/docs/x-for-websites/cards/overview/summary-card-with-large-image). Creating the images and cropping them manually would be too much work for every blog post.
+I was implementing meta tags for twitter [summary large card](https://developer.x.com/en/docs/x-for-websites/cards/overview/summary-card-with-large-image). Creating the images and cropping them manually would be time consuming for every blog post. In this post, I'll show you how I automated this process using Playwright - typically an end-to-end testing tool - to programmatically generate consistent social media preview images.
 
 So, I thought I would automate this using end-to-end testing tool, [Playwright](https://playwright.dev/). I knew I read this in Playwright documentation that it is able to take screenshots, and [I was right](https://playwright.dev/docs/screenshots). Playwright claims to be a reliable end-to-end testing. And I can vouch for that it is snappier runtime compared to Cypress. At least, that is what I experience from using them both. Although maybe Cypress has already improved so much after the last time I used it 3 years ago.
 
@@ -25,7 +21,7 @@ So, I thought I would automate this using end-to-end testing tool, [Playwright](
 
 Setting up Playwright is easy using npm, yarn, or pnpm.
 
-```sh
+```bash
 # if you use npm
 npm init playwright@latest
 # if you use pnpm
@@ -33,9 +29,9 @@ pnpm create playwright
 ```
 
 Follow the prompts to create several options, i.e., directory name, GitHub Actions workflow, and their browsers.
-This will be create following files for you to get started
+This will create following files for you to get started
 
-```sh
+```bash
 playwright.config.ts
 package.json
 package-lock.json
@@ -149,7 +145,7 @@ test(`screenshot posts`, async ({ context }) => {
 
 After writing tests, run them with playwright
 
-```sh
+```bash
 npx playwright test
 # or pnpm
 pnpm exec playwright test

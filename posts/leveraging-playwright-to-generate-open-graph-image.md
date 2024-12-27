@@ -35,7 +35,7 @@ pnpm create playwright
 Follow the prompts to create several options, i.e., directory name, GitHub Actions workflow, and their browsers.
 This will be create following files for you to get started
 
-```
+```sh
 playwright.config.ts
 package.json
 package-lock.json

@@ -2,6 +2,7 @@ import { Link } from 'react-router';
 import { Route } from './+types/posts';
 import { getPostWithLink } from '~/loaders/posts';
 import { buildOpenGraphTwitterMeta } from '~/loaders/og-twitter';
+import { Fragment } from 'react/jsx-runtime';
 
 export function meta() {
   return [
@@ -27,16 +28,17 @@ export default function Page({ loaderData }: Route.ComponentProps) {
   return (
     <div className="mx-[32px]">
       <h1 className="font-bold text-xl">Posts</h1>
-      <div className="mx-[16px] text-[#E8F1F2]">
-        {loaderData.posts.map(post => (
-          <Link
-            key={post.link}
-            to={`/posts/${post.link}`}
-            className="flex flex-row"
-          >
-            <span className="w-28">{post.date}</span>
-            {post.title}
-          </Link>
+      <div className="text-[#E8F1F2]">
+        {loaderData.posts.map((post, index, arr) => (
+          <Fragment key={post.link}>
+            <Link to={`/posts/${post.link}`} className="flex flex-row">
+              <span className="min-w-28">{post.date}</span>
+              {post.title}
+            </Link>
+            {index < arr.length - 1 && (
+              <span className="min-w-full block min-h-px bg-[#E8F1F2]" />
+            )}
+          </Fragment>
         ))}
       </div>
     </div>

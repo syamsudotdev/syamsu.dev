@@ -1,6 +1,6 @@
 +++
 categories = ["pekerjaan"]
-date = 2017-11-17T14:47:46Z
+date = 2017-11-17T14:47:46
 description = ""
 draft = false
 slug = "burnout-dalam-pekerjaan-bagaimana-mengatasinya"
@@ -9,8 +9,6 @@ title = "Burnout dalam Pekerjaan, Bagaimana Mengatasinya ?"
 image = "/images/burnout-match.jpg"
 layout = "layouts/blog.tsx"
 +++
-
-# Burnout dalam Pekerjaan, Bagaimana Mengatasinya ?
 
 ![burnout](/images/burnout-match.jpg)
 Pernahkah kamu di suatu pagi merasa terlalu lelah untuk berangkat ke kantor ? Atau, ketika diminta meningkatkan akselerasi **progress**, ternyata kamu tiba - tiba seperti merasa kehilangan kemampuan berpikir untuk melanjutkan pekerjaan ? Mungkin itulah yang dinamakan **burnout.**

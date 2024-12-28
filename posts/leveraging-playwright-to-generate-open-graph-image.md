@@ -1,5 +1,5 @@
 +++
-date = 2024-12-27T07:11:17Z
+date = 2024-12-27T07:11:17
 description = ""
 draft = false
 slug = "leveraging-playwright-to-generate-open-graph-image"
@@ -8,8 +8,6 @@ title = "Leveraging Playwright to Generate Open Graph Image"
 image = "/images/playwright-logo"
 layout = "layouts/blog.tsx"
 +++
-
-# Leveraging Playwright to Generate Open Graph Image
 
 ![Playwright Logo](/images/playwright-logo.svg)
 

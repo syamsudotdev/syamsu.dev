@@ -35,7 +35,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body className="flex relative flex-col font-sans text-white select-none bg-[#1E363B]">
         <Header />
-        <div className="h-[40px] xl:h-[68px]" />
+        <div className="h-[52px] xl:h-[68px]" />
         {children}
         <footer className="flex px-4 py-6 w-full border-t-2 border-white xl:border-px xl:px-6">
           <p className="mx-auto text-white">&copy; Mochamad Noor Syamsu</p>

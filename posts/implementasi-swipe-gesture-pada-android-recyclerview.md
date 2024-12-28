@@ -1,6 +1,6 @@
 +++
 categories = ["android", "pemrograman"]
-date = 2018-03-16T08:55:03Z
+date = 2018-03-16T08:55:03
 description = ""
 draft = false
 slug = "implementasi-swipe-gesture-pada-android-recyclerview"
@@ -9,8 +9,6 @@ title = "Implementasi Swipe Gesture pada Android RecyclerView"
 image = "/images/touch-gesture.jpeg"
 layout = "layouts/blog.tsx"
 +++
-
-# Implementasi Swipe Gesture pada Android RecyclerView
 
 ![Touch Gesture](/images/touch-gesture.jpeg)
 Pada umumnya sebuah aplikasi android yang punya tampilan list menerapkan swipe gesture untuk menghilangkannya dari list. Ada banyak cara di internet bagaimana implementasi gesture ini pada RecyclerView. Salah satunya menggunakan [ItemTouchHelper](https://developer.android.com/reference/android/support/v7/widget/helper/ItemTouchHelper.html) untuk translasi sebuah item RecyclerView.<!--more--> Translasi di sini maksudnya adalah memindahkan semua titik dari sebuah objek di view ke arah tertentu dengan jarak yang sama. Contohnya pada swipe gesture yang akan kita implementasikan kali ini. Supaya user dapat melakukan swipe pada sebuah item, maka item yang bersangkutan membutuhkan kemampuan untuk melakukan translasi.

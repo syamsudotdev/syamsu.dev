@@ -27,13 +27,18 @@ export default function Page({ loaderData }: Route.ComponentProps) {
   return (
     <div className="mx-[32px]">
       <h1 className="font-bold text-xl">Posts</h1>
-      <ul className="mx-[16px] list-disc text-[#E8F1F2]">
+      <div className="mx-[16px] text-[#E8F1F2]">
         {loaderData.posts.map(post => (
-          <li key={post.link}>
-            <Link to={`/posts/${post.link}`}>{post.title}</Link>
-          </li>
+          <Link
+            key={post.link}
+            to={`/posts/${post.link}`}
+            className="flex flex-row"
+          >
+            <span className="w-28">{post.date}</span>
+            {post.title}
+          </Link>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

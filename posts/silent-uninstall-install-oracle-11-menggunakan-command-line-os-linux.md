@@ -1,6 +1,6 @@
 +++
 categories = ["administrator", "database", "sysadmin"]
-date = 2018-02-12T05:00:52Z
+date = 2018-02-12T05:00:52
 description = ""
 draft = false
 slug = "silent-uninstall-install-oracle-11-menggunakan-command-line-os-linux"
@@ -9,8 +9,6 @@ title = "Silent Uninstall-Install Oracle 11g R2 Menggunakan Command Line Interfa
 image = "/images/oracle-database.jpg"
 layout = "layouts/blog.tsx"
 +++
-
-# Silent Uninstall-Install Oracle 11g R2 Menggunakan Command Line Interface di OS Berbasis Linux
 
 ![Oracle Database](/images/oracle-database.jpg)
 Jadi, kemarin baru saja saya diminta memperbaiki Oracle Database Software. Setelah berkutat dengan database-nya sampai seharian. Ternyata ruang sisa penyimpanannya habis. Oleh klien diminta hapus saja data fisik dari database **mainan** yang memakan 60% dari kapasitas penyimpanan.<!--more--> Dengan polosnya saya asal hapus saja data fisiknya dari penyimpanan. Kemudian saya baru sadar itu menyebabkan sistem database-nya error. Oh, sometimes people can be stupid to not do mistakes they had done. Recover apa yang sudah dihapus itu terlalu merepotkan. Toh ini database memang mau dipakai dari dalam keadaan kosong. Maka diputuskan untuk melakukan install ulang RDBMS nya.

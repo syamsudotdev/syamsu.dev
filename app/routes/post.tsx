@@ -76,7 +76,7 @@ export default function Page({ loaderData }: Route.ComponentProps) {
           return (
             <code
               {...rest}
-              className={`${className} px-[16px] py-[8px] bg-slate-800 w-full block`}
+              className={`${className} px-[16px] py-[8px] bg-slate-800 w-full block overflow-x-auto`}
             >
               {children}
             </code>

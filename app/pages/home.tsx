@@ -1,3 +1,8 @@
+import { ReactNode } from 'react';
+import { Link } from 'react-router';
+import { Fragment } from 'react/jsx-runtime';
+import { PostDetailResult } from '~/loaders/posts';
+
 const YEARS_EXP = (
   (new Date().getTime() - new Date(2016, 7).getTime()) /
   31_536_000_000
@@ -239,7 +244,49 @@ function Card(data: { data: ProjectData }) {
   );
 }
 
-export default function HomePage() {
+export function LatestPosts({ posts }: { posts: PostDetailResult[] }) {
+  return (
+    <section
+      id="latest-posts"
+      className="container mx-auto space-y-6 px-[24px] xl:px-0 xl:w-4/5"
+    >
+      <div className="flex">
+        <h2 className="font-bold tracking-tighter text-[#E8F1F2]">
+          Latest Posts
+        </h2>
+        <Link
+          to="/posts"
+          className="ml-auto font-bold text-[#E8F1F2] hover:underline"
+        >
+          All Posts &gt;
+        </Link>
+      </div>
+      <div className="block xl:grid xl:grid-cols-3 xl:gap-4 space-y-4 xl:space-y-0">
+        {posts.map(post => (
+          <Fragment key={post.slug}>
+            <div className="flex flex-col text-[#E8F1F2] rounded-lg border border-[#385D65]/30 bg-gradient-to-b from-[#1E363B]/40 to-[#385D65]/40">
+              <div className="flex flex-col space-y-1.5 p-6 pb-2">
+                <h3 className="pb-2 font-semibold tracking-tight leading-none border-b border-[#385D65]/30">
+                  {post.title}
+                </h3>
+                <p className="text-[#92B4BC]">{post.date}</p>
+                <p>{post.short}</p>
+              </div>
+              <Link
+                to={`/posts/${post.slug}`}
+                className="items-center m-6 ml-auto hover:underline"
+              >
+                See more &gt;
+              </Link>
+            </div>
+          </Fragment>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+export default function HomePage({ latestPosts }: { latestPosts: ReactNode }) {
   return (
     <main className="flex-col w-full">
       <section className="flex flex-col xl:justify-center items-center mx-auto w-full xl:w-3/4 h-screen">
@@ -287,6 +334,8 @@ export default function HomePage() {
         </div>
       </section>
       <div className="h-4" />
+      {latestPosts}
+      <div className="h-10" />
       <section
         id="works"
         className="container mx-auto space-y-6 px-[24px] xl:px-0 xl:w-4/5"

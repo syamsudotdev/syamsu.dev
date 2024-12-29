@@ -1,5 +1,7 @@
 import { buildOpenGraphTwitterMeta } from '~/loaders/og-twitter';
-import Home from '~/pages/home';
+import { getLatestPosts } from '~/loaders/posts';
+import Home, { LatestPosts } from '~/pages/home';
+import { Route } from './+types/home';
 
 export function meta() {
   return [
@@ -13,6 +15,10 @@ export function meta() {
   ];
 }
 
-export default function Page() {
-  return <Home />;
+export function loader() {
+  return getLatestPosts();
+}
+
+export default function Page(loaderData: Route.ComponentProps) {
+  return <Home latestPosts={<LatestPosts posts={loaderData.loaderData} />} />;
 }

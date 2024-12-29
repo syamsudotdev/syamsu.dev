@@ -6,6 +6,9 @@
 # Delete file if exists
 rm -f syamsudotdev-latest.tar.gz
 
+# Delete local image
+docker rmi syamsudotdev:latest
+
 # Build docker image with Dockerfile.pnpm targetting linux/amd64, tagged with syamsudotdev:latest
 docker build --no-cache --progress=plain -f Dockerfile.pnpm --platform=linux/amd64 -t syamsudotdev:latest .
 

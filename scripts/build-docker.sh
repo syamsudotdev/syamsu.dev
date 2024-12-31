@@ -3,6 +3,9 @@
 # Regenerate meta images
 ./scripts/generate-meta-images.sh
 
+# Generate RSS feed
+pnpm rss-gen
+
 # Delete file if exists
 rm -f syamsudotdev-latest.tar.gz
 

@@ -42,6 +42,49 @@ export async function getPostWithLink(): Promise<PostWithLinkResult[]> {
   }));
 }
 
+export async function getAllPosts(): Promise<
+  {
+    title: string;
+    short: string;
+    date: Date;
+    slug: string;
+  }[]
+> {
+  const filenames = await getPostFilenames();
+  const posts = await Promise.all(
+    filenames.map(async filename => ({
+      slug: filename,
+      content: await fs.readFile(`posts/${filename}`, 'utf-8'),
+    }))
+  );
+
+  return await Promise.all(
+    posts.map(async post => {
+      const title = getPostTitle(post.content);
+      const strippedMarkdown = await remark()
+        .use(stripMarkdown)
+        .process(post.content.substring(post.content.lastIndexOf('+++') + 3))
+        .then(result => result.toString().replace('\uc2a0', ' '));
+
+      const short = strippedMarkdown
+        .toString()
+        .split('\n')
+        .slice(1)
+        .join(' ')
+        .trim()
+        .replace('<!--more-->', '')
+        .substring(0, 200);
+
+      return {
+        title,
+        slug: post.slug.replace(/\.mdx?$/g, ''),
+        date: getPostDate(post.content),
+        short,
+      };
+    })
+  );
+}
+
 export async function getLatestPosts(): Promise<PostDetailResult[]> {
   const filenames = await getPostFilenames();
   const posts = await Promise.all(
@@ -64,7 +107,8 @@ export async function getLatestPosts(): Promise<PostDetailResult[]> {
       const title = getPostTitle(post.content);
       const strippedMarkdown = await remark()
         .use(stripMarkdown)
-        .process(post.content.substring(post.content.lastIndexOf('+++') + 3));
+        .process(post.content.substring(post.content.lastIndexOf('+++') + 3))
+        .then(result => result.toString().replace('\uc2a0', ' '));
 
       const short = strippedMarkdown
         .toString()

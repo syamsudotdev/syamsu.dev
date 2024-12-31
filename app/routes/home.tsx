@@ -10,7 +10,7 @@ export function meta() {
     ...buildOpenGraphTwitterMeta({
       title: 'syamsu.dev',
       description: 'Mochamad Noor Syamsu Web Homepage',
-      imagePath: 'index.jpeg',
+      imagePath: 'homepage.jpeg',
     }),
   ];
 }

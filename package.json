@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "rss-gen": "tsx rss-generator.ts",
     "routegen": "react-router typegen --watch",
     "build": "react-router build",
     "dev": "react-router dev",
@@ -36,6 +37,7 @@
     "globals": "^15.14.0",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17",
+    "tsx": "^4.19.2",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.18.2",
     "vite": "^5.4.11",

@@ -7,7 +7,7 @@ test('screenshot homepage', async ({ page }) => {
   await page.goto('/');
   await page.waitForLoadState('domcontentloaded');
   await page.screenshot({
-    path: `${baseScreenshotDir}/index.jpeg`,
+    path: `${baseScreenshotDir}/homepage.jpeg`,
     quality: 100,
     clip: { x: 0, y: 0, width: 600, height: 300 },
   });

@@ -51,6 +51,9 @@ function DesktopNav() {
       <Link to="mailto:hi@syamsu.dev" className="cursor-pointer">
         Contact
       </Link>
+      <Link to="/rss.xml" className="cursor-pointer">
+        RSS Feed
+      </Link>
     </nav>
   );
 }
@@ -106,6 +109,15 @@ function MobileNav() {
               to="mailto:hi@syamsu.dev"
             >
               Contact
+            </Link>
+          </li>
+          <li className="w-full h-px bg-[#E8F1F2]" />
+          <li>
+            <Link
+              className="block px-2 py-2 whitespace-nowrap rounded-b cursor-pointer hover:bg-[#E8F1F2]/30"
+              to="/rss.xml"
+            >
+              RSS Feed
             </Link>
           </li>
         </ul>

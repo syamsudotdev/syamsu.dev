@@ -35,7 +35,7 @@ async function generateSitemap() {
       .join('')}
   </channel>
 </rss>
-`;
+`.trim();
 
   await fs.rm('public/rss.xml').catch(() => {
     // do nothing

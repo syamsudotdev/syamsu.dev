@@ -72,6 +72,9 @@ export default function Page({ loaderData }: Route.ComponentProps) {
           h2: ({ children }) => (
             <h2 className="font-bold text-lg my-2">{children}</h2>
           ),
+          h3: ({ children }) => (
+            <h3 className="font-semibold my-2">{children}</h3>
+          ),
           img: ({ src, alt }) => (
             <img
               src={src}

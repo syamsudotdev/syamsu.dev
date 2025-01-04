@@ -313,24 +313,24 @@ export default function HomePage({ latestPosts }: { latestPosts: ReactNode }) {
         </div>
         <div className="h-4" />
         <div className="flex flex-col space-y-4 xl:flex-row xl:space-x-4 xl:space-y-0">
-          <a
+          <Link
             className="inline-flex justify-center items-center py-4 w-56 font-medium text-[#1E363B] bg-[#E8F1F2] rounded-md shadow transition-colors hover:border hover:border-[#E8F1F2] hover:bg-[#E8F1F2]/60 hover:text-[#1E363B] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#385D65] xl:w-28 xl:py-2"
-            href="mailto:hi@syamsu.dev"
+            to="mailto:hi@syamsu.dev"
           >
             Get in Touch
-          </a>
-          <a
+          </Link>
+          <Link
             className="inline-flex justify-center items-center py-4 w-56 font-medium text-[#1E363B] bg-[#E8F1F2] rounded-md shadow transition-colors hover:border hover:border-[#E8F1F2] hover:bg-[#E8F1F2]/60 hover:text-[#1E363B] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#385D65] xl:w-28 xl:py-2"
-            href="#works"
+            to="#works"
           >
             My Works
-          </a>
-          <a
+          </Link>
+          <Link
             className="inline-flex justify-center items-center py-4 w-56 font-medium text-[#E8F1F2] rounded-md border border-[#E8F1F2] shadow transition-colors hover:bg-[#E8F1F2]/90 hover:text-[#1E363B] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#385D65] xl:w-28 xl:py-2"
-            href="#about-me"
+            to="#about-me"
           >
             About Me
-          </a>
+          </Link>
         </div>
       </section>
       <div className="h-4" />

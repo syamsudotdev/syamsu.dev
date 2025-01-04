@@ -88,7 +88,10 @@ export default function Page({ loaderData }: Route.ComponentProps) {
             </Link>
           ),
           p: ({ children }) => (
-            <p className="mb-4 has-[img]:mb-0">{children}</p>
+            <p className="mb-2 has-[img]:mb-0">{children}</p>
+          ),
+          ul: ({ children }) => (
+            <ul className="list-disc ml-4 mb-2">{children}</ul>
           ),
           pre: function Pre(props) {
             const { children, className, ...rest } = props;

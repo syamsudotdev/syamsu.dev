@@ -83,7 +83,7 @@ export default function Page({ loaderData }: Route.ComponentProps) {
             />
           ),
           a: ({ href, children }) => (
-            <Link to={href || ''} className="underline">
+            <Link to={href || ''} className="underline" target="_blank">
               {children}
             </Link>
           ),

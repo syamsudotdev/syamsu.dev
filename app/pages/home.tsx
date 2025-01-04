@@ -307,50 +307,43 @@ export default function HomePage({ latestPosts }: { latestPosts: ReactNode }) {
           About Me
         </h1>
         <p className="text-[#E8F1F2]">
-          Hello, I&apos;m Sam, a Full Stack Engineer with a wealth of experience
-          in Android app and web development, complemented by expertise in using
-          Firebase products. My proficiency in technologies like Kotlin,
-          TypeScript, NextJS, and Firebase positions me as a full stack engineer
-          capable of delivering quick, efficient, and high-quality solutions for
-          both web and Android platforms. With {YEARS_EXP} years of professional
-          experience, I&apos;ve become adept at crafting robust and innovative
-          solutions that span various technologies.
+          Hi there! I&apos;m Sam, and I love building things. With {YEARS_EXP}{' '}
+          years in the field, I&apos;ve grown into a Full Stack Engineer who
+          specializes in Android and web development. My toolkit includes
+          Kotlin, TypeScript, NextJS, and Firebase - tools I use to craft fast,
+          efficient solutions that actually work.
         </p>
         <p className="text-[#E8F1F2]">
-          In Android app development, I&apos;m a proficient user of Kotlin,
-          leveraging its expressive syntax and powerful features to create
-          efficient and user-friendly mobile applications. For web development,
-          TypeScript is my language of choice, allowing me to build dynamic and
-          scalable web applications.
+          On the Android side, Kotlin is my go-to language. I dig how expressive
+          it is and how it helps me write cleaner code. When I&apos;m working on
+          web projects, I rely on TypeScript to keep things organized and
+          scalable.
         </p>
         <p className="text-[#E8F1F2]">
-          In full-stack development, I prefer NextJS as my web framework,
-          seamlessly integrating ReactJS for the user interface and NodeJS for
-          the backend. While I excel in a variety of technologies, I
-          specifically turn to Firebase products for quick Minimum Viable
-          Product (MVP) development.
+          For web development, NextJS is my framework of choice - it just makes
+          sense when you are working with React on the frontend and need solid
+          server-side capabilities. When I need to get an MVP out quickly,
+          Firebase is my secret weapon.
         </p>
         <p className="text-[#E8F1F2]">
-          I have a wealth of experience in utilizing Firebase products such as
-          A/B Testing, Remote Config, Authentication, and Cloud Firestore to
-          rapidly implement features for MVPs. These tools enable me to swiftly
-          incorporate dynamic configuration changes, user authentication, and
-          efficient data storage, creating a seamless and personalized
-          experience for users during the initial development phases.
+          Speaking of Firebase, I have put pretty much every Firebase tool
+          through its paces - from A/B Testing and Remote Config to
+          Authentication and Cloud Firestore. These tools are fantastic for
+          getting features up and running quickly, especially when you are
+          building that crucial first version of a product.
         </p>
         <p className="text-[#E8F1F2]">
-          Additionally, I am well-versed in Firebase Crashlytics to ensure
-          stability, Firebase Cloud Storage for scalable cloud storage needs,
-          Firebase Cloud Messaging for streamlined communication, and Firebase
-          Cloud Functions for extending functionality as needed.
+          I&apos;m also well-versed in Firebase&apos;s other offerings -
+          Crashlytics for keeping tabs on app stability, Cloud Storage for
+          handling files, Cloud Messaging for notifications, and Cloud Functions
+          for those special backend needs.
         </p>
         <p className="text-[#E8F1F2]">
-          In addition to crafting exemplary code, I&apos;m dedicated to
-          knowledge sharing. Through comprehensive documentation, I ensure that
-          the next developer, whether a colleague or successor, can seamlessly
-          pick up where I left off. This commitment to thorough documentation
-          not only facilitates smooth transitions but also contributes to the
-          overall sustainability of the projects I undertake.
+          One thing I take pride in is writing code that others can understand
+          and maintain. I believe in solid documentation - not just because
+          it&apos;s good practice, but because I have been on the other side,
+          trying to figure out undocumented code. Trust me, future developers
+          will thank you for good docs!
         </p>
       </section>
     </main>

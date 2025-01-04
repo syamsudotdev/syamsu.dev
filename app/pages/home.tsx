@@ -289,50 +289,6 @@ export function LatestPosts({ posts }: { posts: PostDetailResult[] }) {
 export default function HomePage({ latestPosts }: { latestPosts: ReactNode }) {
   return (
     <main className="flex-col w-full">
-      <section className="flex flex-col xl:justify-center items-center mx-auto w-full xl:w-3/4 h-screen">
-        <div className="h-4" />
-        <div className="flex flex-col space-y-4 w-[18em] xl:w-[24em]">
-          <div className="mx-auto">
-            <h1 className="font-bold text-[#E8F1F2] text-2xl max-w-[80vw] xl:max-w-full">
-              Hi! I am Sam,
-            </h1>
-            <div className="h-2" />
-            <h1 className="font-bold text-[#E8F1F2] text-2xl max-w-[80vw] xl:max-w-full">
-              Your Digital Development Partner
-            </h1>
-            <div className="h-2" />
-            <p className="text-[#92B4BC]">
-              With {YEARS_EXP}+ Years Expertise in Android, Kotlin, NodeJS,
-              ReactJS, and NextJS. Seamlessly blending tech brilliance and
-              aesthetic finesse. Elevate your digital game with me.
-            </p>
-          </div>
-          <p className="mx-auto font-bold text-2xl text-transparent bg-clip-text text-center bg-gradient-to-r from-[#385D65] to-[#E8F1F2]">
-            Where Experience Meets Innovation!
-          </p>
-        </div>
-        <div className="h-4" />
-        <div className="flex flex-col space-y-4 xl:flex-row xl:space-x-4 xl:space-y-0">
-          <Link
-            className="inline-flex justify-center items-center py-4 w-56 font-medium text-[#1E363B] bg-[#E8F1F2] rounded-md shadow transition-colors hover:border hover:border-[#E8F1F2] hover:bg-[#E8F1F2]/60 hover:text-[#1E363B] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#385D65] xl:w-28 xl:py-2"
-            to="mailto:hi@syamsu.dev"
-          >
-            Get in Touch
-          </Link>
-          <Link
-            className="inline-flex justify-center items-center py-4 w-56 font-medium text-[#1E363B] bg-[#E8F1F2] rounded-md shadow transition-colors hover:border hover:border-[#E8F1F2] hover:bg-[#E8F1F2]/60 hover:text-[#1E363B] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#385D65] xl:w-28 xl:py-2"
-            to="#works"
-          >
-            My Works
-          </Link>
-          <Link
-            className="inline-flex justify-center items-center py-4 w-56 font-medium text-[#E8F1F2] rounded-md border border-[#E8F1F2] shadow transition-colors hover:bg-[#E8F1F2]/90 hover:text-[#1E363B] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#385D65] xl:w-28 xl:py-2"
-            to="#about-me"
-          >
-            About Me
-          </Link>
-        </div>
-      </section>
       <div className="h-4" />
       {latestPosts}
       <div className="h-10" />

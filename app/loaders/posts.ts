@@ -63,7 +63,7 @@ export async function getAllPosts(): Promise<
       const title = getPostTitle(post.content);
       const strippedMarkdown = await remark()
         .use(stripMarkdown)
-        .process(post.content.substring(post.content.lastIndexOf('+++') + 3))
+        .process(post.content.substring(post.content.lastIndexOf('+++')))
         .then(result => result.toString().replace('\uc2a0', ' '));
 
       const short = strippedMarkdown
@@ -107,7 +107,7 @@ export async function getLatestPosts(): Promise<PostDetailResult[]> {
       const title = getPostTitle(post.content);
       const strippedMarkdown = await remark()
         .use(stripMarkdown)
-        .process(post.content.substring(post.content.lastIndexOf('+++') + 3))
+        .process(post.content.substring(post.content.lastIndexOf('+++')))
         .then(result => result.toString().replace('\uc2a0', ' '));
 
       const short = strippedMarkdown

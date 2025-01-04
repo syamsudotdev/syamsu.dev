@@ -45,8 +45,11 @@ function DesktopNav() {
         </ul>
       </details>
       {/* end dropdown */}
-      <Link to="/posts" className="cursor-pointer">
-        Blog
+      <Link to="https://syamsu.dev#works" className="cursor-pointer">
+        Works
+      </Link>
+      <Link to="https://syamsu.dev#about-me" className="cursor-pointer">
+        About
       </Link>
       <Link to="mailto:hi@syamsu.dev" className="cursor-pointer">
         Contact
@@ -110,9 +113,18 @@ function MobileNav() {
           <li>
             <Link
               className="block px-2 py-2 whitespace-nowrap rounded-t cursor-pointer hover:bg-[#E8F1F2]/30"
-              to="/posts"
+              to="https://syamsu.dev#works"
             >
-              Blog
+              Works
+            </Link>
+          </li>
+          <li className="w-full h-px bg-[#E8F1F2]" />
+          <li>
+            <Link
+              className="block px-2 py-2 whitespace-nowrap rounded-b cursor-pointer hover:bg-[#E8F1F2]/30"
+              to="https://syamsu.dev#about-me"
+            >
+              About
             </Link>
           </li>
           <li className="w-full h-px bg-[#E8F1F2]" />

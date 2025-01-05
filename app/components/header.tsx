@@ -3,6 +3,9 @@ import { Link } from 'react-router';
 function DesktopNav() {
   return (
     <nav className="hidden xl:flex mr-8 ml-auto space-x-4 font-semibold items-center">
+      <Link to="https://syamsu.dev/posts" className="cursor-pointer">
+        Archive
+      </Link>
       {/* begin dropdown */}
       <details className="inline-block relative">
         <summary className="inline-flex items-center cursor-pointer xl:py-4">
@@ -83,6 +86,15 @@ function MobileNav() {
           <span className="mr-1">Menu</span>
         </summary>
         <ul className="absolute list-none rounded border bg-[#1E363B] -ml-[48px] mt-[4px]">
+          <li>
+            <Link
+              className="block px-2 py-2 whitespace-nowrap cursor-pointer hover:bg-[#E8F1F2]/30"
+              to="https://syamsu.dev/posts"
+            >
+              Archive
+            </Link>
+          </li>
+          <li className="w-full h-px bg-[#E8F1F2]" />
           <li>
             <Link
               className="block px-2 py-2 whitespace-nowrap cursor-pointer hover:bg-[#E8F1F2]/30"

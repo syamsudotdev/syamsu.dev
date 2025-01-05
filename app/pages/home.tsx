@@ -320,7 +320,7 @@ export default function HomePage({ latestPosts }: { latestPosts: ReactNode }) {
           scalable.
         </p>
         <p className="text-[#E8F1F2]">
-          For web development, NextJS is my framework of choice - it just makes
+          For web development, ReactJS is my framework of choice - it just makes
           sense when you are working with React on the frontend and need solid
           server-side capabilities. When I need to get an MVP out quickly,
           Firebase is my secret weapon.

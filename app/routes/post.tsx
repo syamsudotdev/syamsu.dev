@@ -79,7 +79,7 @@ export default function Page({ loaderData }: Route.ComponentProps) {
             <img
               src={src}
               alt={alt}
-              className="rounded mx-auto my-4 max-h-[50vh] xl:max-w-[60vw] xl:max-h-[30vh]"
+              className="rounded mx-auto my-4 max-h-[50vh] xl:max-w-[60vw] xl:max-h-[30vh] bg-base-light"
             />
           ),
           a: ({ href, children }) => (
@@ -113,17 +113,20 @@ export default function Page({ loaderData }: Route.ComponentProps) {
               typeof children === 'string' && !children.trim().includes('\n');
             const NumberedLines: ReactNode =
               isCodeBlock && !isInline ? (
-                children.split('\n').map((line, index) => {
-                  return (
-                    <p key={index + 1} className="flex flex-row">
-                      <span className="border-r pr-1 min-w-6 text-right">
-                        {(index + 1).toString()}
-                      </span>
-                      <span className="min-w-2" />
-                      <span>{line}</span>
-                    </p>
-                  );
-                })
+                children
+                  .split('\n')
+                  .filter(Boolean)
+                  .map((line, index) => {
+                    return (
+                      <p key={index + 1} className="flex flex-row">
+                        <span className="border-r pr-1 min-w-6 text-right">
+                          {(index + 1).toString()}
+                        </span>
+                        <span className="min-w-2" />
+                        <span>{line}</span>
+                      </p>
+                    );
+                  })
               ) : isInline ? (
                 <span className="font-mono text-amber-500">{children}</span>
               ) : (

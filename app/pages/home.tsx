@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 import { Link } from 'react-router';
-import { Fragment } from 'react/jsx-runtime';
 import { PostDetailResult } from '~/loaders/posts';
 
 const YEARS_EXP = (
@@ -263,23 +262,22 @@ export function LatestPosts({ posts }: { posts: PostDetailResult[] }) {
       </div>
       <div className="block xl:grid xl:grid-cols-3 xl:gap-4 space-y-4 xl:space-y-0">
         {posts.map(post => (
-          <Fragment key={post.slug}>
-            <div className="flex flex-col text-[#E8F1F2] rounded-lg border border-[#385D65]/30 bg-gradient-to-b from-[#1E363B]/40 to-[#385D65]/40">
-              <div className="flex flex-col space-y-1.5 p-6 pb-2">
-                <h3 className="pb-2 font-semibold tracking-tight leading-none border-b border-[#385D65]/30">
-                  {post.title}
-                </h3>
-                <p className="text-[#92B4BC]">{post.date}</p>
-                <p>{post.short}</p>
-              </div>
-              <Link
-                to={`/posts/${post.slug}`}
-                className="items-center m-6 ml-auto hover:underline"
-              >
-                See more &gt;
-              </Link>
+          <Link
+            key={post.slug}
+            to={`/posts/${post.slug}`}
+            className="group flex flex-col text-[#E8F1F2] rounded-lg border border-[#385D65]/30 bg-gradient-to-b from-[#1E363B]/40 to-[#385D65]/40"
+          >
+            <div className="flex flex-col space-y-1.5 p-6 pb-2">
+              <h3 className="pb-2 font-semibold tracking-tight leading-none border-b border-[#385D65]/30 group-hover:underline">
+                {post.title}
+              </h3>
+              <p className="text-[#92B4BC]">{post.date}</p>
+              <p>{post.short}</p>
             </div>
-          </Fragment>
+            <span className="items-center m-6 mt-auto ml-auto group-hover:underline">
+              See more &gt;
+            </span>
+          </Link>
         ))}
       </div>
     </section>

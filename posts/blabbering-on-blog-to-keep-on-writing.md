@@ -3,7 +3,7 @@ date = 2025-01-05T07:11:17
 description = ""
 draft = false
 slug = "blabbering-on-blog-to-keep-on-writing"
-tags = ["random"]
+tags = ["scratchpad"]
 title = "Blabbering on Blog to Keep on Writing"
 +++
 

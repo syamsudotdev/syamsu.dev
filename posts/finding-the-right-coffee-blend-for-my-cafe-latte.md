@@ -3,7 +3,7 @@ date = 2025-01-18T07:11:17
 description = ""
 draft = false
 slug = "finding-the-right-coffee-blend-for-my-cafe-latte"
-tags = ["reactjs", "programming"]
+tags = ["scratchpad"]
 title = "Finding the Right Coffee Blend for my Cafe Latte"
 +++
 

@@ -35,6 +35,11 @@ export async function loader({ params }: Route.LoaderArgs) {
     titleLine.lastIndexOf('"')
   );
 
+  const tagsLine = content.split('\n').find(line => line.startsWith('tags = '));
+  const tags: string[] = JSON.parse(
+    tagsLine?.substring(tagsLine.indexOf('= ') + 1)?.trim() || '[]'
+  );
+
   const dateLine = content.split('\n').find(line => line.startsWith('date = '));
   const dateString =
     dateLine
@@ -55,15 +60,30 @@ export async function loader({ params }: Route.LoaderArgs) {
     .replace('<!--more-->', '')
     .substring(0, 200);
   const post = content.replace('<!--more-->', '');
-  return { title, short, post, date: dateString };
+  return { title, short, post, tags, date: dateString };
 }
 
 export default function Page({ loaderData }: Route.ComponentProps) {
   return (
     <>
       <h1 className="font-bold text-xl mx-[16px]">{loaderData.title}</h1>
-      <span className="min-h-1" />
-      <p className="mx-[16px]">{loaderData.date}</p>
+      <div className="mx-[16px] flex flex-1 items-center space-x-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 16 16"
+          fill="currentColor"
+          className="size-5"
+        >
+          <path d="M5.75 7.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5ZM5 10.25a.75.75 0 1 1 1.5 0 .75.75 0 0 1-1.5 0ZM10.25 7.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5ZM7.25 8.25a.75.75 0 1 1 1.5 0 .75.75 0 0 1-1.5 0ZM8 9.5A.75.75 0 1 0 8 11a.75.75 0 0 0 0-1.5Z" />
+          <path
+            fillRule="evenodd"
+            d="M4.75 1a.75.75 0 0 0-.75.75V3a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2V1.75a.75.75 0 0 0-1.5 0V3h-5V1.75A.75.75 0 0 0 4.75 1ZM3.5 7a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v4.5a1 1 0 0 1-1 1h-7a1 1 0 0 1-1-1V7Z"
+            clipRule="evenodd"
+          />
+        </svg>
+        <p>{loaderData.date}</p>
+      </div>
+      <span className="min-h-px max-h-px mx-[16px] bg-base-light" />
       <Markdown
         remarkPlugins={[[remarkFrontmatter, 'toml'], [remarkGfm]]}
         components={{
@@ -158,6 +178,22 @@ export default function Page({ loaderData }: Route.ComponentProps) {
       >
         {loaderData.post}
       </Markdown>
+      <span className="min-h-[24px] max-h-[24px]" />
+      <div className="mx-[16px] flex flex-1 items-center space-x-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          className="size-5"
+        >
+          <path
+            fillRule="evenodd"
+            d="M4.5 2A2.5 2.5 0 0 0 2 4.5v3.879a2.5 2.5 0 0 0 .732 1.767l7.5 7.5a2.5 2.5 0 0 0 3.536 0l3.878-3.878a2.5 2.5 0 0 0 0-3.536l-7.5-7.5A2.5 2.5 0 0 0 8.38 2H4.5ZM5 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"
+            clipRule="evenodd"
+          />
+        </svg>
+        <p>{loaderData.tags.join(', ')}</p>
+      </div>
     </>
   );
 }

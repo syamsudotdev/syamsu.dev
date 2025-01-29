@@ -7,6 +7,7 @@ import { Link } from 'react-router';
 import { buildOpenGraphTwitterMeta } from '~/loaders/og-twitter';
 import stripMarkdown from 'strip-markdown';
 import { ReactNode } from 'react';
+import remarkGfm from 'remark-gfm';
 
 export function meta(arg: Route.MetaArgs) {
   return [
@@ -60,11 +61,11 @@ export async function loader({ params }: Route.LoaderArgs) {
 export default function Page({ loaderData }: Route.ComponentProps) {
   return (
     <>
-      <h1 className="font-bold text-xl mx-[32px]">{loaderData.title}</h1>
+      <h1 className="font-bold text-xl mx-[16px]">{loaderData.title}</h1>
       <span className="min-h-1" />
-      <p className="mx-[32px]">{loaderData.date}</p>
+      <p className="mx-[16px]">{loaderData.date}</p>
       <Markdown
-        remarkPlugins={[[remarkFrontmatter, 'toml']]}
+        remarkPlugins={[[remarkFrontmatter, 'toml'], [remarkGfm]]}
         components={{
           h1: ({ children }) => (
             <h1 className="font-bold text-xl">{children}</h1>
@@ -139,8 +140,21 @@ export default function Page({ loaderData }: Route.ComponentProps) {
               </code>
             );
           },
+          table: ({ children }) => (
+            <table className="xl:w-3/5 w-full border-collapse border">
+              {children}
+            </table>
+          ),
+          th: ({ children }) => (
+            <th className="border border-[#E8F1F2] bg-base-light text-base-dark text-left pl-2">
+              {children}
+            </th>
+          ),
+          td: ({ children }) => (
+            <td className="border border-[#E8F1F2] pl-2 pr-4">{children}</td>
+          ),
         }}
-        className="mx-[32px] flex flex-col text-[#E8F1F2]"
+        className="mx-[16px] flex flex-col text-[#E8F1F2]"
       >
         {loaderData.post}
       </Markdown>

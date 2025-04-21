@@ -64,7 +64,9 @@ export async function getAllPosts(): Promise<
       const strippedMarkdown = await remark()
         .use(stripMarkdown)
         .process(post.content.substring(post.content.lastIndexOf('+++')))
-        .then(result => result.toString().replace('\uc2a0', ' '));
+        .then(result =>
+          result.toString().replaceAll('\uc2a0', ' ').replaceAll('\u00a0', ' ')
+        );
 
       const short = strippedMarkdown
         .toString()

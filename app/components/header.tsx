@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 function DesktopNav() {
   return (
     <nav className="hidden xl:flex mr-8 ml-auto space-x-4 font-semibold items-center">
-      <Link to="https://syamsu.dev/posts" className="cursor-pointer">
+      <Link to="/posts" className="cursor-pointer">
         Archive
       </Link>
       {/* begin dropdown */}
@@ -48,10 +48,10 @@ function DesktopNav() {
         </ul>
       </details>
       {/* end dropdown */}
-      <Link to="https://syamsu.dev#works" className="cursor-pointer">
+      <Link to="/#works" className="cursor-pointer">
         Works
       </Link>
-      <Link to="https://syamsu.dev#about-me" className="cursor-pointer">
+      <Link to="/#about-me" className="cursor-pointer">
         About
       </Link>
       <Link to="mailto:hi@syamsu.dev" className="cursor-pointer">
@@ -89,7 +89,7 @@ function MobileNav() {
           <li>
             <Link
               className="block px-2 py-2 whitespace-nowrap cursor-pointer hover:bg-[#E8F1F2]/30"
-              to="https://syamsu.dev/posts"
+              to="/posts"
             >
               Archive
             </Link>
@@ -125,7 +125,7 @@ function MobileNav() {
           <li>
             <Link
               className="block px-2 py-2 whitespace-nowrap rounded-t cursor-pointer hover:bg-[#E8F1F2]/30"
-              to="https://syamsu.dev#works"
+              to="/#works"
             >
               Works
             </Link>
@@ -134,7 +134,7 @@ function MobileNav() {
           <li>
             <Link
               className="block px-2 py-2 whitespace-nowrap rounded-b cursor-pointer hover:bg-[#E8F1F2]/30"
-              to="https://syamsu.dev#about-me"
+              to="/#about-me"
             >
               About
             </Link>

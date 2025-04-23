@@ -11,4 +11,5 @@ export default [
     index('routes/posts.tsx'),
     route(':slug', 'routes/post.tsx'),
   ]),
+  route('*', 'routes/api/redirect.ts'),
 ] satisfies RouteConfig;

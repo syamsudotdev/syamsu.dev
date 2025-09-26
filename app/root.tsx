@@ -35,10 +35,21 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body className="flex relative flex-col font-sans text-white select-none bg-[#1E363B]">
         <Header />
-        <div className="h-[52px] xl:h-[68px]" />
+        <div className="h-[48px] xl:h-[56px]" />
         {children}
-        <footer className="flex px-4 py-6 w-full border-t-2 border-white xl:border-px xl:px-6">
-          <p className="mx-auto text-white">&copy; Mochamad Noor Syamsu</p>
+        {/* Footer */}
+        <footer className="py-12 px-6 border-t border-[#385D65]/30">
+          <div className="max-w-6xl mx-auto text-center space-y-4">
+            <div className="text-2xl font-bold bg-gradient-to-r from-[#E8F1F2] to-[#92B4BC] bg-clip-text text-transparent">
+              syamsu.dev
+            </div>
+            <p className="text-[#92B4BC]">
+              Building the future, one line of code at a time.
+            </p>
+            <div className="text-sm text-[#92B4BC]">
+              © 2024 Mochamad Noor Syamsu. All rights reserved.
+            </div>
+          </div>
         </footer>
         <ScrollRestoration />
         <Scripts />

@@ -1,10 +1,10 @@
 // Generate site map for all pages
 
 import fs from 'node:fs/promises';
-import { getAllPosts } from '~/loaders/posts';
+import { getAllPosts } from '~/lib/posts';
 
 async function generateSitemap() {
-  const posts = await getAllPosts();
+  const posts = await (getAllPosts as any)();
   const items = posts
     .sort((a, b) => a.date.getTime() - b.date.getTime())
     .map(post => ({

@@ -6,9 +6,6 @@
 app = 'react-router-ssg'
 primary_region = 'sin'
 
-[build]
-  dockerfile = "Dockerfile.pnpm"
-
 [http_service]
   internal_port = 3000
   force_https = true

@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { buildOpenGraphTwitterMeta } from '~/utils/seo';
 import { getLatestPosts, PostDetailResult } from '~/lib/posts';
-import { ReactNode } from 'react';
 
 export const Route = createFileRoute('/')({
   loader: () => (getLatestPosts as any)(),

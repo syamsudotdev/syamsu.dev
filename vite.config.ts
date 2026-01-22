@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { TanStackRouterVite } from '@tanstack/router-vite-plugin';
+import { tanstackRouter } from '@tanstack/router-vite-plugin';
 import { tanstackStart } from '@tanstack/react-start/plugin/vite';
 import autoprefixer from 'autoprefixer';
 import tailwindcss from 'tailwindcss';
@@ -17,7 +17,7 @@ export default defineConfig({
     },
   },
   plugins: [
-    TanStackRouterVite(),
+    tanstackRouter(),
     tanstackStart({
       prerender: {
         enabled: true,
@@ -27,4 +27,7 @@ export default defineConfig({
     }),
     react(),
   ],
+  preview: {
+    allowedHosts: true,
+  },
 });

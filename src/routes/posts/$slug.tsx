@@ -21,15 +21,19 @@ const getPostContent = createServerFn({ method: 'GET' })
 
     const title = titleLine?.substring(
       titleLine.indexOf('"') + 1,
-      titleLine.lastIndexOf('"')
+      titleLine.lastIndexOf('"'),
     );
 
-    const tagsLine = content.split('\n').find(line => line.startsWith('tags = '));
+    const tagsLine = content
+      .split('\n')
+      .find(line => line.startsWith('tags = '));
     const tags: string[] = JSON.parse(
-      tagsLine?.substring(tagsLine.indexOf('= ') + 1)?.trim() || '[]'
+      tagsLine?.substring(tagsLine.indexOf('= ') + 1)?.trim() || '[]',
     );
 
-    const dateLine = content.split('\n').find(line => line.startsWith('date = '));
+    const dateLine = content
+      .split('\n')
+      .find(line => line.startsWith('date = '));
     const dateString =
       dateLine
         ?.substring(dateLine.indexOf('= ') + 1)
@@ -57,14 +61,6 @@ const getPostContent = createServerFn({ method: 'GET' })
       date: dateString,
     };
   });
-
-async function getAllPostSlugs() {
-  const fs = await import('node:fs/promises');
-  const files = await fs.readdir('posts');
-  return files
-    .filter(file => file.endsWith('.md'))
-    .map(file => file.replace('.md', ''));
-}
 
 export const Route = createFileRoute('/posts/$slug')({
   loader: async ({
@@ -106,7 +102,6 @@ function PostComponent() {
     tags: string[];
     date: string;
   };
-
 
   return (
     <main className="min-h-screen bg-base-dark">

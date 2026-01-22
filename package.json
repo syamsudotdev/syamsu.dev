@@ -6,7 +6,7 @@
     "rss-gen": "tsx rss-generator.ts",
     "build": "vite build",
     "dev": "vite dev",
-    "start": "vite preview",
+    "start": "vite preview --port 3000 --host",
     "typecheck": "tsc --build --noEmit"
   },
   "dependencies": {

@@ -21,9 +21,8 @@ WORKDIR /app
 RUN pnpm build
 
 FROM base
-COPY package.json pnpm-lock.yaml /app/
-COPY --from=development-dependencies-env /app/node_modules /app/node_modules
-COPY --from=build-env /app/dist /app/dist
-WORKDIR /app
+COPY package.json pnpm-lock.yaml ./
+COPY --from=development-dependencies-env /app/node_modules ./node_modules
+COPY --from=build-env /app/dist ./dist
 EXPOSE 3000
-CMD ["pnpm", "exec", "vite", "preview", "--port", "3000", "--host"]
+CMD ["pnpm", "start"]

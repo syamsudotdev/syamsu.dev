@@ -8,7 +8,7 @@ import tailwindcss from 'tailwindcss';
 export default defineConfig({
   css: {
     postcss: {
-      plugins: [tailwindcss, autoprefixer],
+      plugins: [tailwindcss, autoprefixer() as any],
     },
   },
   resolve: {

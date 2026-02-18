@@ -5,17 +5,20 @@ export default {
   theme: {
     extend: {
       colors: {
-        base: '#385D65',
-        'base-dark': '#1E363B',
-        'base-light': '#E8F1F2',
-        accent: '#92B4BC',
+        'baby-blue': '#68bbe3',
+        'blue-grotto': '#0e86d4',
+        'blue': '#055c9d',
+        'navy-blue': '#003060',
+        'off-white': '#f5f5f5',
       },
       fontFamily: {
         sans: [
+          '"Helvetica Neue"',
+          '"Arial"',
+          'sans-serif',
           '"Inter"',
           'ui-sans-serif',
           'system-ui',
-          'sans-serif',
           '"Apple Color Emoji"',
           '"Segoe UI Emoji"',
           '"Segoe UI Symbol"',

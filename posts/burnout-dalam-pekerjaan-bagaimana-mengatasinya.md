@@ -4,7 +4,6 @@ description = ""
 slug = "burnout-dalam-pekerjaan-bagaimana-mengatasinya"
 tags = ["scratchpad"]
 title = "Burnout dalam Pekerjaan, Bagaimana Mengatasinya ?"
-image = "/images/burnout-match.jpg"
 layout = "layouts/blog.tsx"
 +++
 

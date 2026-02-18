@@ -1,5 +1,5 @@
 import { test } from '@playwright/test';
-import { getPostWithLink } from '~/loaders/posts';
+import { getPostWithLink } from '~/lib/posts';
 
 const baseScreenshotDir = 'playwright/screenshots';
 

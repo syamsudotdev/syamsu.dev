@@ -37,19 +37,19 @@ function RootComponent() {
       <head>
         <HeadContent />
       </head>
-      <body className="flex relative flex-col font-sans text-white select-none bg-[#1E363B]">
+      <body className="flex relative flex-col font-sans text-navy-blue select-none bg-white">
         <Header />
         <div className="h-[48px] xl:h-[56px]" />
         <Outlet />
-        <footer className="py-12 px-6 border-t border-[#385D65]/30">
-          <div className="max-w-6xl mx-auto text-center space-y-4">
-            <div className="text-2xl font-bold bg-gradient-to-r from-[#E8F1F2] to-[#92B4BC] bg-clip-text text-transparent">
+        <footer className="py-12 px-6 border-t-2 border-blue">
+          <div className="max-w-6xl mx-auto space-y-4">
+            <div className="text-2xl font-bold text-navy-blue">
               syamsu.dev
             </div>
-            <p className="text-[#92B4BC]">
+            <p className="text-blue-grotto">
               Building the future, one line of code at a time.
             </p>
-            <div className="text-sm text-[#92B4BC]">
+            <div className="text-sm text-blue-grotto">
               © 2024 Mochamad Noor Syamsu. All rights reserved.
             </div>
           </div>

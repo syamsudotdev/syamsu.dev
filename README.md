@@ -1,98 +1,75 @@
-# Welcome to React Router!
+# Syamsu.dev Portfolio & Blog
 
-A modern, production-ready template for building full-stack React applications using React Router.
+A personal portfolio and blog built with **TanStack Start** and **TanStack Router**, featuring Static Site Generation (SSG) and a custom Swiss Design system.
 
-## Features
+## Key Features
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+- **Type-safe routing**: Built with TanStack Router for end-to-end type safety.
+- **Static Site Generation (SSG)**: High performance with pre-rendered static HTML.
+- **Markdown-based blog**: Content pipeline using `remark`, `unified`, and `react-markdown`.
+- **Swiss Style Design**: Clean, minimalist aesthetic utilizing Helvetica/Arial, grid layouts, and flat design via Tailwind CSS.
+- **RSS Feed**: Automated RSS generation for blog posts.
+- **SEO Ready**: Optimized meta tags and head management.
+
+## Tech Stack
+
+- **Framework**: TanStack Start (Beta)
+- **Router**: TanStack Router (v1)
+- **Styling**: Tailwind CSS
+- **Content**: Remark / Unified / React Markdown
+- **Build Tool**: Vite
+- **Runtime**: Node.js / TypeScript
 
 ## Getting Started
 
 ### Installation
 
-Install the dependencies:
+This project uses `pnpm`. Install the dependencies:
 
 ```bash
-npm install
+pnpm install
 ```
 
 ### Development
 
-Start the development server with HMR:
+Start the development server:
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
-Your application will be available at `http://localhost:5173`.
+### Build
 
-## Building for Production
-
-Create a production build:
+To create a production build with pre-rendered static HTML:
 
 ```bash
-npm run build
+pnpm build
 ```
 
-## Deployment
+### Preview
 
-### Docker Deployment
-
-This template includes three Dockerfiles optimized for different package managers:
-
-- `Dockerfile` - for npm
-- `Dockerfile.pnpm` - for pnpm
-- `Dockerfile.bun` - for bun
-
-To build and run using Docker:
+Preview the production build locally:
 
 ```bash
-# For npm
-docker build -t my-app .
-
-# For pnpm
-docker build -f Dockerfile.pnpm -t my-app .
-
-# For bun
-docker build -f Dockerfile.bun -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
+pnpm start
 ```
 
-The containerized application can be deployed to any platform that supports Docker, including:
+### RSS Generation
 
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
+Generate the RSS feed manually:
 
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
+```bash
+pnpm rss-gen
 ```
 
-## Styling
+## Project Structure
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+- `src/routes/`: File-based routing using TanStack Router.
+- `posts/`: Markdown files for blog content.
+- `src/lib/posts.ts`: Data layer for fetching and processing Markdown posts.
+- `public/`: Static assets.
+- `rss-generator.ts`: Script for generating the RSS feed.
 
 ---
 
-Built with ❤️ using React Router.
+Built with precision and Swiss design principles.

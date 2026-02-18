@@ -5,9 +5,9 @@ import { getAllPosts } from '~/lib/posts';
 
 async function generateSitemap() {
   const posts = await (getAllPosts as any)();
-  const items = posts
-    .sort((a, b) => a.date.getTime() - b.date.getTime())
-    .map(post => ({
+  const items = (posts as any[])
+    .sort((a: any, b: any) => a.date.getTime() - b.date.getTime())
+    .map((post: any) => ({
       title: post.title,
       link: `https://syamsu.dev/posts/${post.slug}`,
       publishedDate: post.date.toUTCString(),
@@ -23,7 +23,7 @@ async function generateSitemap() {
     <description>Mochamad Noor Syamsu Web Homepage</description>
     ${items
       .map(
-        item => `
+        (item: any) => `
       <item>
         <title>${item.title}</title>
         <link>${item.link}</link>

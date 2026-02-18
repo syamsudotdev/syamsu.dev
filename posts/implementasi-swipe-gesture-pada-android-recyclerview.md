@@ -6,7 +6,6 @@ draft = false
 slug = "implementasi-swipe-gesture-pada-android-recyclerview"
 tags = ["android", "itemtouchhelper", "pemrograman", "recyclerview", "swipe"]
 title = "Implementasi Swipe Gesture pada Android RecyclerView"
-image = "/images/touch-gesture.jpeg"
 layout = "layouts/blog.tsx"
 +++
 

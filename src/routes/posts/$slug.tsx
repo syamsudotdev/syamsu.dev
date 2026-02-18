@@ -104,71 +104,41 @@ function PostComponent() {
   };
 
   return (
-    <main className="min-h-screen bg-base-dark">
+    <main className="min-h-screen bg-white">
       {/* Header Section */}
-      <section className="py-12 px-6">
+      <section className="pt-16 pb-12 px-6 border-b border-gray-200">
         <div className="max-w-4xl mx-auto">
-          <div className="space-y-6">
+          <div className="space-y-8">
             {/* Back Navigation */}
             <Link
               to="/posts"
-              className="inline-flex items-center text-[#92B4BC] hover:text-[#E8F1F2] transition-colors text-sm font-medium text-lg"
+              className="inline-flex items-center text-gray-500 hover:text-navy-blue transition-colors font-mono text-sm"
             >
               <span className="mr-2">←</span>
-              Back to all posts
+              BACK TO POSTS
             </Link>
 
             {/* Post Header */}
-            <div className="space-y-4">
-              <h1 className="text-3xl md:text-4xl font-bold text-[#E8F1F2] leading-tight">
+            <div className="space-y-6">
+              <h1 className="text-5xl md:text-6xl font-black text-navy-blue leading-tight tracking-tighter">
                 {loaderData.title}
               </h1>
 
               {/* Meta Information */}
-              <div className="flex flex-wrap items-center gap-6 text-[#92B4BC]">
-                <div className="flex items-center space-x-2">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 16 16"
-                    fill="currentColor"
-                    className="size-4"
-                  >
-                    <path d="M5.75 7.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5ZM5 10.25a.75.75 0 1 1 1.5 0 .75.75 0 0 1-1.5 0ZM10.25 7.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5ZM7.25 8.25a.75.75 0 1 1 1.5 0 .75.75 0 0 1-1.5 0ZM8 9.5A.75.75 0 1 0 8 11a.75.75 0 0 0 0-1.5Z" />
-                    <path
-                      fillRule="evenodd"
-                      d="M4.75 1a.75.75 0 0 0-.75.75V3a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2V1.75a.75.75 0 0 0-1.5 0V3h-5V1.75A.75.75 0 0 0 4.75 1ZM3.5 7a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v4.5a1 1 0 0 1-1 1h-7a1 1 0 0 1-1-1V7Z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span className="text-sm font-medium">{loaderData.date}</span>
-                </div>
-
-                {loaderData.tags.length > 0 && (
-                  <div className="flex items-center space-x-2">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      className="size-4"
+              <div className="flex flex-wrap items-center gap-4 text-gray-500 font-mono text-sm uppercase tracking-wider">
+                <span className="tabular-nums">{loaderData.date}</span>
+                <span className="text-gray-300">■</span>
+                <div className="flex flex-wrap gap-x-4">
+                  {loaderData.tags.map((tag, index) => (
+                    <Link
+                      key={index}
+                      to="/posts"
+                      className="hover:text-blue-grotto transition-colors"
                     >
-                      <path
-                        fillRule="evenodd"
-                        d="M4.5 2A2.5 2.5 0 0 0 2 4.5v3.879a2.5 2.5 0 0 0 .732 1.767l7.5 7.5a2.5 2.5 0 0 0 3.536 0l3.878-3.878a2.5 2.5 0 0 0 0-3.536l-7.5-7.5A2.5 2.5 0 0 0 8.38 2H4.5ZM5 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    <div className="flex flex-wrap gap-2">
-                      {loaderData.tags.map((tag, index) => (
-                        <span
-                          key={index}
-                          className="px-2 py-1 bg-[#385D65]/20 text-[#E8F1F2] rounded text-xs font-medium border border-[#385D65]/30"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
+                      {tag}
+                    </Link>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -176,24 +146,28 @@ function PostComponent() {
       </section>
 
       {/* Content Section */}
-      <section className="pb-20 px-6">
+      <section className="py-16 px-6">
         <div className="max-w-4xl mx-auto">
-          <article className="prose prose-invert prose-lg max-w-none">
+          <article className="prose prose-lg max-w-none 
+            prose-headings:text-navy-blue prose-headings:font-bold prose-headings:tracking-tight
+            prose-a:text-blue-grotto prose-a:no-underline hover:prose-a:underline
+            prose-strong:text-navy-blue
+            prose-img:rounded-none prose-img:border prose-img:border-gray-200 prose-img:shadow-none">
             <Markdown
               remarkPlugins={[[remarkFrontmatter, 'toml'], [remarkGfm]]}
               components={{
                 h1: ({ children }) => (
-                  <h1 className="text-3xl font-bold text-[#E8F1F2] mt-8 mb-4">
+                  <h1 className="text-4xl font-bold text-navy-blue mt-12 mb-6">
                     {children}
                   </h1>
                 ),
                 h2: ({ children }) => (
-                  <h2 className="text-2xl font-bold text-[#E8F1F2] mt-6 mb-3">
+                  <h2 className="text-3xl font-bold text-navy-blue mt-10 mb-5">
                     {children}
                   </h2>
                 ),
                 h3: ({ children }) => (
-                  <h3 className="text-xl font-semibold text-[#E8F1F2] mt-4 mb-2">
+                  <h3 className="text-2xl font-bold text-navy-blue mt-8 mb-4">
                     {children}
                   </h3>
                 ),
@@ -201,13 +175,13 @@ function PostComponent() {
                   <img
                     src={src}
                     alt={alt}
-                    className="rounded-lg mx-auto my-8 max-w-full h-auto shadow-lg bg-white"
+                    className="mx-auto my-12 max-w-full h-auto border border-gray-200"
                   />
                 ),
                 a: ({ href, children }) => (
                   <a
                     href={href || ''}
-                    className="text-[#92B4BC] hover:text-[#E8F1F2] underline transition-colors"
+                    className="text-blue-grotto hover:underline transition-colors"
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -215,25 +189,12 @@ function PostComponent() {
                   </a>
                 ),
                 p: ({ children }) => (
-                  <p className="text-[#E8F1F2]/90 leading-relaxed mb-4 has-[img]:mb-0">
+                  <p className="text-gray-800 leading-relaxed mb-6 has-[img]:mb-0">
                     {children}
                   </p>
                 ),
-                ul: ({ children }) => (
-                  <ul className="list-disc ml-6 mb-4 space-y-1 text-[#E8F1F2]/90">
-                    {children}
-                  </ul>
-                ),
-                ol: ({ children }) => (
-                  <ol className="list-decimal ml-6 mb-4 space-y-1 text-[#E8F1F2]/90">
-                    {children}
-                  </ol>
-                ),
-                li: ({ children }) => (
-                  <li className="text-[#E8F1F2]/90">{children}</li>
-                ),
                 blockquote: ({ children }) => (
-                  <blockquote className="border-l-4 border-[#385D65] pl-4 py-2 my-6 bg-[#1E363B]/30 rounded-r text-[#E8F1F2]/90 italic">
+                  <blockquote className="border-l-4 border-navy-blue pl-6 py-4 my-8 bg-off-white italic text-gray-700">
                     {children}
                   </blockquote>
                 ),
@@ -242,7 +203,7 @@ function PostComponent() {
                   return (
                     <pre
                       {...rest}
-                      className={`${className} p-4 bg-[#0F1419] border border-[#385D65]/30 rounded-lg w-full block overflow-x-auto my-6 text-sm`}
+                      className={`${className} p-6 bg-gray-900 border-l-4 border-blue w-full block overflow-x-auto my-8 text-sm font-mono`}
                     >
                       {children}
                     </pre>
@@ -256,54 +217,53 @@ function PostComponent() {
                   const isInline =
                     typeof children === 'string' &&
                     !children.trim().includes('\n');
-                  const NumberedLines: ReactNode =
-                    isCodeBlock && !isInline ? (
-                      (children as string)
-                        .split('\n')
-                        .filter(Boolean)
-                        .map((line, index) => {
-                          return (
+                  
+                  if (isCodeBlock && !isInline) {
+                    return (
+                      <code {...rest} className={className}>
+                        {(children as string)
+                          .split('\n')
+                          .filter(Boolean)
+                          .map((line, index) => (
                             <div key={index + 1} className="flex">
-                              <span className="border-r border-[#385D65]/30 pr-3 mr-3 min-w-8 text-right text-[#92B4BC] select-none text-xs">
+                              <span className="border-r border-gray-700 pr-4 mr-4 min-w-8 text-right text-gray-500 select-none">
                                 {(index + 1).toString()}
                               </span>
-                              <span className="text-[#E8F1F2]">{line}</span>
+                              <span className="text-gray-100">{line}</span>
                             </div>
-                          );
-                        })
-                    ) : isInline ? (
-                      <span className="font-mono text-[#92B4BC] bg-[#385D65]/20 px-1.5 py-0.5 rounded text-sm">
-                        {children}
-                      </span>
-                    ) : (
-                      children
+                          ))}
+                      </code>
                     );
+                  }
 
-                  return (
-                    <code {...rest} className={className}>
-                      {NumberedLines}
-                    </code>
-                  );
+                  if (isInline) {
+                    return (
+                      <code className="font-mono text-blue-grotto bg-gray-100 px-1.5 py-0.5 text-sm">
+                        {children}
+                      </code>
+                    );
+                  }
+
+                  return <code {...rest} className={className}>{children}</code>;
                 },
                 table: ({ children }) => (
-                  <div className="overflow-x-auto my-6">
-                    <table className="w-full border-collapse border border-[#385D65]/30 rounded-lg overflow-hidden">
+                  <div className="overflow-x-auto my-8">
+                    <table className="w-full border-collapse border border-gray-200">
                       {children}
                     </table>
                   </div>
                 ),
                 th: ({ children }) => (
-                  <th className="border border-[#385D65]/30 bg-[#385D65]/20 text-[#E8F1F2] text-left p-3 font-semibold">
+                  <th className="border border-gray-200 bg-gray-50 text-navy-blue text-left p-4 font-bold uppercase text-xs tracking-wider">
                     {children}
                   </th>
                 ),
                 td: ({ children }) => (
-                  <td className="border border-[#385D65]/30 p-3 text-[#E8F1F2]/90">
+                  <td className="border border-gray-200 p-4 text-gray-700">
                     {children}
                   </td>
                 ),
               }}
-              className="text-[#E8F1F2]"
             >
               {loaderData.post}
             </Markdown>

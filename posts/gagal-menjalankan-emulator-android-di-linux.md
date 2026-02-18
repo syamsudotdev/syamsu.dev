@@ -6,7 +6,6 @@ draft = false
 slug = "gagal-menjalankan-emulator-android-di-linux"
 tags = ["android", "android emulator", "pemrograman"]
 title = "Gagal Menjalankan Emulator Android di Linux"
-image = "/images/emulator.png"
 layout = "layouts/blog.tsx"
 +++
 

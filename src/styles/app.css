@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --baby-blue: #68bbe3;
+    --blue-grotto: #0e86d4;
+    --blue: #055c9d;
+    --navy-blue: #003060;
+    --off-white: #f5f5f5;
+  }
+
+  body {
+    @apply bg-off-white text-navy-blue antialiased;
+  }
+}
+
+@layer utilities {
+  .swiss-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+  }
+
+  .swiss-rule-h {
+    @apply h-[1px] bg-blue;
+  }
+
+  .swiss-rule-v {
+    @apply w-[1px] bg-blue;
+  }
+}

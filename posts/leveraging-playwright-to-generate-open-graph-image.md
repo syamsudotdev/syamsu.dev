@@ -5,7 +5,6 @@ draft = false
 slug = "leveraging-playwright-to-generate-open-graph-image"
 tags = ["web", "programming", "javascript"]
 title = "Leveraging Playwright to Generate Open Graph Image"
-image = "/images/playwright-logo"
 layout = "layouts/blog.tsx"
 +++
 

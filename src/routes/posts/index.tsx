@@ -28,50 +28,38 @@ function PostsComponent() {
   const { posts } = Route.useLoaderData();
 
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-white">
       {/* Header Section */}
-      <section className="py-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center space-y-4 mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold">
-              All{' '}
-              <span className="bg-gradient-to-r from-[#E8F1F2] to-[#92B4BC] bg-clip-text text-transparent">
-                Posts
-              </span>
-            </h1>
-            <p className="text-xl text-[#92B4BC] max-w-2xl mx-auto">
-              A collection of thoughts, tutorials, and insights from my journey
-              in tech
-            </p>
-          </div>
+      <section className="pt-20 pb-10 px-6">
+        <div className="max-w-6xl mx-auto border-b-8 border-navy-blue pb-4">
+          <h1 className="text-7xl md:text-8xl font-black text-navy-blue uppercase tracking-tighter">
+            All Posts
+          </h1>
         </div>
       </section>
 
-      {/* Posts Grid Section */}
+      {/* Posts List Section */}
       <section className="pb-20 px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {posts.map(post => (
+          <div className="flex flex-col">
+            {posts.map((post) => (
               <Link
                 key={post.link}
                 to="/posts/$slug"
                 params={{ slug: post.link }}
-                className="group flex flex-col text-[#E8F1F2] rounded-xl border border-[#385D65]/30 bg-gradient-to-br from-[#1E363B]/60 to-[#385D65]/40 hover:border-[#385D65]/60 transition-all duration-300 hover:shadow-lg hover:shadow-[#385D65]/20 overflow-hidden"
+                className="group flex items-center justify-between py-6 border-b border-gray-200 transition-colors"
               >
-                <div className="flex flex-col p-6 flex-1">
-                  <h3 className="text-xl font-bold tracking-tight leading-tight text-[#E8F1F2] group-hover:text-white transition-colors mb-3">
-                    {post.title}
-                  </h3>
-                  <p className="text-[#92B4BC] text-sm font-medium mb-4">
+                <div className="flex items-center gap-8 md:gap-16 flex-1">
+                  <span className="font-mono text-gray-500 tabular-nums text-sm md:text-base whitespace-nowrap">
                     {post.date}
-                  </p>
-                  <div className="flex items-center text-[#92B4BC] group-hover:text-[#E8F1F2] transition-colors text-sm font-medium">
-                    <span>Read more</span>
-                    <span className="ml-2 group-hover:translate-x-1 transition-transform">
-                      →
-                    </span>
-                  </div>
+                  </span>
+                  <h2 className="text-xl md:text-2xl font-bold text-navy-blue group-hover:text-blue-grotto transition-colors">
+                    {post.title}
+                  </h2>
                 </div>
+                <span className="text-2xl md:text-3xl text-navy-blue group-hover:translate-x-2 transition-transform duration-200 ease-out">
+                  →
+                </span>
               </Link>
             ))}
           </div>

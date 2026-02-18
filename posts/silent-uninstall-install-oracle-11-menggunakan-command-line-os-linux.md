@@ -6,7 +6,6 @@ draft = false
 slug = "silent-uninstall-install-oracle-11-menggunakan-command-line-os-linux"
 tags = ["administrator", "database", "sysadmin"]
 title = "Silent Uninstall-Install Oracle 11g R2 Menggunakan Command Line Interface di OS Berbasis Linux"
-image = "/images/oracle-database.jpg"
 layout = "layouts/blog.tsx"
 +++
 

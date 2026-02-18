@@ -2,13 +2,13 @@ import { Link } from '@tanstack/react-router';
 
 function DesktopNav() {
   return (
-    <nav className="hidden xl:flex mr-8 ml-auto space-x-4 font-semibold items-center">
-      <Link to="/posts" className="cursor-pointer">
+    <nav className="hidden xl:flex mr-8 ml-auto space-x-6 font-bold tracking-wide uppercase items-center text-navy-blue">
+      <Link to="/posts" className="cursor-pointer hover:text-blue-grotto hover:underline">
         Archive
       </Link>
       {/* begin dropdown */}
       <details className="group inline-block relative">
-        <summary className="inline-flex items-center cursor-pointer xl:py-4 px-2 rounded-md transition-colors">
+        <summary className="inline-flex items-center cursor-pointer xl:py-4 px-2 transition-colors hover:text-blue-grotto">
           <span className="mr-2">Socials</span>
           <svg
             className="w-4 h-4 fill-current transition-transform group-open:rotate-180"
@@ -18,10 +18,10 @@ function DesktopNav() {
             <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
           </svg>
         </summary>
-        <ul className="absolute right-0 top-full mt-2 min-w-[160px] list-none rounded-lg border border-[#E8F1F2]/20 bg-[#1E363B] shadow-lg backdrop-blur-sm z-50 opacity-0 invisible group-open:opacity-100 group-open:visible transition-all duration-200 ease-out transform scale-95 group-open:scale-100">
+        <ul className="absolute right-0 top-full mt-0 min-w-[200px] list-none border-2 border-blue bg-white z-50 opacity-0 invisible group-open:opacity-100 group-open:visible transition-all duration-200 ease-out">
           <li>
             <Link
-              className="flex items-center px-4 py-3 text-sm whitespace-nowrap cursor-pointer hover:bg-[#E8F1F2]/20 transition-colors duration-150 first:rounded-t-lg"
+              className="flex items-center px-4 py-3 text-sm whitespace-nowrap cursor-pointer hover:bg-baby-blue hover:text-white transition-colors duration-150"
               to="."
               target="_blank"
               href="https://github.com/syamsudotdev"
@@ -34,7 +34,7 @@ function DesktopNav() {
           </li>
           <li>
             <Link
-              className="flex items-center px-4 py-3 text-sm whitespace-nowrap cursor-pointer hover:bg-[#E8F1F2]/20 transition-colors duration-150"
+              className="flex items-center px-4 py-3 text-sm whitespace-nowrap cursor-pointer hover:bg-baby-blue hover:text-white transition-colors duration-150"
               to="."
               target="_blank"
               href="https://www.linkedin.com/in/mochamad-noor-syamsu-832617a5/"
@@ -47,7 +47,7 @@ function DesktopNav() {
           </li>
           <li>
             <Link
-              className="flex items-center px-4 py-3 text-sm whitespace-nowrap cursor-pointer hover:bg-[#E8F1F2]/20 transition-colors duration-150 last:rounded-b-lg"
+              className="flex items-center px-4 py-3 text-sm whitespace-nowrap cursor-pointer hover:bg-baby-blue hover:text-white transition-colors duration-150"
               to="."
               target="_blank"
               href="https://x.com/syamsudotdev"
@@ -61,35 +61,19 @@ function DesktopNav() {
         </ul>
       </details>
       {/* end dropdown */}
-      <Link to="/" hash="works" className="cursor-pointer">
+      <Link to="/" hash="works" className="cursor-pointer hover:text-blue-grotto hover:underline">
         Works
       </Link>
-      <Link to="/" hash="about-me" className="cursor-pointer">
+      <Link to="/" hash="about-me" className="cursor-pointer hover:text-blue-grotto hover:underline">
         About
       </Link>
       <Link
         to="."
         target="_blank"
         href="mailto:hi@syamsu.dev"
-        className="cursor-pointer"
+        className="cursor-pointer hover:text-blue-grotto hover:underline"
       >
         Contact
-      </Link>
-      <Link to="/rss.xml" className="cursor-pointer">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="size-5"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M12.75 19.5v-.75a7.5 7.5 0 0 0-7.5-7.5H4.5m0-6.75h.75c7.87 0 14.25 6.38 14.25 14.25v.75M6 18.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
-          />
-        </svg>
       </Link>
     </nav>
   );
@@ -97,10 +81,10 @@ function DesktopNav() {
 
 function MobileNav() {
   return (
-    <nav className="flex xl:hidden ml-auto mr-4 space-x-4 font-semibold items-center py-[4px]">
+    <nav className="flex xl:hidden ml-auto mr-4 space-x-4 font-bold tracking-wide uppercase items-center py-[4px] text-navy-blue">
       {/* begin dropdown */}
       <details className="group inline-block relative">
-        <summary className="inline-flex items-center cursor-pointer py-2 px-3 rounded-md transition-colors">
+        <summary className="inline-flex items-center cursor-pointer py-2 px-3 transition-colors hover:text-blue-grotto">
           <span className="mr-2">Menu</span>
           <svg
             className="w-4 h-4 fill-current transition-transform group-open:rotate-180"
@@ -110,10 +94,10 @@ function MobileNav() {
             <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
           </svg>
         </summary>
-        <ul className="absolute right-0 top-full mt-2 min-w-[160px] list-none rounded-lg border border-[#E8F1F2]/20 bg-[#1E363B] shadow-lg backdrop-blur-sm z-50 opacity-0 invisible group-open:opacity-100 group-open:visible transition-all duration-200 ease-out transform scale-95 group-open:scale-100">
+        <ul className="absolute right-0 top-full mt-0 min-w-[200px] list-none border-2 border-blue bg-white z-50 opacity-0 invisible group-open:opacity-100 group-open:visible transition-all duration-200 ease-out">
           <li>
             <Link
-              className="flex items-center px-4 py-3 text-sm whitespace-nowrap cursor-pointer hover:bg-[#E8F1F2]/20 transition-colors duration-150 first:rounded-t-lg"
+              className="flex items-center px-4 py-3 text-sm whitespace-nowrap cursor-pointer hover:bg-baby-blue hover:text-white transition-colors duration-150"
               to="/posts"
             >
               <svg className="w-4 h-4 mr-3 fill-current" viewBox="0 0 24 24">
@@ -124,7 +108,7 @@ function MobileNav() {
           </li>
           <li>
             <Link
-              className="flex items-center px-4 py-3 text-sm whitespace-nowrap cursor-pointer hover:bg-[#E8F1F2]/20 transition-colors duration-150"
+              className="flex items-center px-4 py-3 text-sm whitespace-nowrap cursor-pointer hover:bg-baby-blue hover:text-white transition-colors duration-150"
               to="."
               target="_blank"
               href="https://github.com/syamsudotdev"
@@ -137,7 +121,7 @@ function MobileNav() {
           </li>
           <li>
             <Link
-              className="flex items-center px-4 py-3 text-sm whitespace-nowrap cursor-pointer hover:bg-[#E8F1F2]/20 transition-colors duration-150"
+              className="flex items-center px-4 py-3 text-sm whitespace-nowrap cursor-pointer hover:bg-baby-blue hover:text-white transition-colors duration-150"
               to="."
               target="_blank"
               href="https://www.linkedin.com/in/mochamad-noor-syamsu-832617a5/"
@@ -150,7 +134,7 @@ function MobileNav() {
           </li>
           <li>
             <Link
-              className="flex items-center px-4 py-3 text-sm whitespace-nowrap cursor-pointer hover:bg-[#E8F1F2]/20 transition-colors duration-150"
+              className="flex items-center px-4 py-3 text-sm whitespace-nowrap cursor-pointer hover:bg-baby-blue hover:text-white transition-colors duration-150"
               to="."
               target="_blank"
               href="https://x.com/syamsudotdev"
@@ -163,7 +147,7 @@ function MobileNav() {
           </li>
           <li>
             <Link
-              className="flex items-center px-4 py-3 text-sm whitespace-nowrap cursor-pointer hover:bg-[#E8F1F2]/20 transition-colors duration-150"
+              className="flex items-center px-4 py-3 text-sm whitespace-nowrap cursor-pointer hover:bg-baby-blue hover:text-white transition-colors duration-150"
               to="/"
               hash="works"
             >
@@ -175,9 +159,9 @@ function MobileNav() {
           </li>
           <li>
             <Link
-              className="flex items-center px-4 py-3 text-sm whitespace-nowrap cursor-pointer hover:bg-[#E8F1F2]/20 transition-colors duration-150"
+              className="flex items-center px-4 py-3 text-sm whitespace-nowrap cursor-pointer hover:bg-baby-blue hover:text-white transition-colors duration-150"
               to="/"
-              hash="#about-me"
+              hash="about-me"
             >
               <svg className="w-4 h-4 mr-3 fill-current" viewBox="0 0 24 24">
                 <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
@@ -187,7 +171,7 @@ function MobileNav() {
           </li>
           <li>
             <Link
-              className="flex items-center px-4 py-3 text-sm whitespace-nowrap cursor-pointer hover:bg-[#E8F1F2]/20 transition-colors duration-150"
+              className="flex items-center px-4 py-3 text-sm whitespace-nowrap cursor-pointer hover:bg-baby-blue hover:text-white transition-colors duration-150"
               to="."
               target="_blank"
               href="mailto:hi@syamsu.dev"
@@ -196,17 +180,6 @@ function MobileNav() {
                 <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
               </svg>
               Contact
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="flex items-center px-4 py-3 text-sm whitespace-nowrap cursor-pointer hover:bg-[#E8F1F2]/20 transition-colors duration-150 last:rounded-b-lg"
-              to="/rss.xml"
-            >
-              <svg className="w-4 h-4 mr-3 fill-current" viewBox="0 0 24 24">
-                <path d="M6.503 20.752c0 1.794-1.456 3.248-3.251 3.248-1.796 0-3.252-1.454-3.252-3.248 0-1.794 1.456-3.248 3.252-3.248 1.795.001 3.251 1.454 3.251 3.248zm-6.503-12.572v4.811c6.05.062 10.96 4.966 11.022 11.009h4.817c-.062-8.71-7.118-15.758-15.839-15.82zm0-3.368c10.58.046 19.152 8.594 19.183 19.188h4.817c-.03-13.231-10.755-23.954-24-24v4.812z" />
-              </svg>
-              RSS
             </Link>
           </li>
         </ul>
@@ -218,8 +191,8 @@ function MobileNav() {
 
 export default function Header() {
   return (
-    <header className="flex fixed top-0 w-screen bg-opacity-80 shadow-lg bg-[#1E363B] text-[#E8F1F2] z-50">
-      <Link className="flex my-auto ml-4" to="/">
+    <header className="flex fixed top-0 w-screen border-b-2 border-blue bg-white text-navy-blue z-50">
+      <Link className="flex my-auto ml-4 py-2" to="/">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -229,7 +202,7 @@ export default function Header() {
           <path d="M12.378 1.602a.75.75 0 0 0-.756 0L3 6.632l9 5.25 9-5.25-8.622-5.03ZM21.75 7.93l-9 5.25v9l8.628-5.032a.75.75 0 0 0 .372-.648V7.93ZM11.25 22.18v-9l-9-5.25v8.57a.75.75 0 0 0 .372.648l8.628 5.033Z" />
         </svg>
         <span className="min-w-2" />
-        <span className="font-semibold my-auto">syamsu.dev</span>
+        <span className="font-bold my-auto uppercase tracking-wide">syamsu.dev</span>
       </Link>
       <MobileNav />
       <DesktopNav />

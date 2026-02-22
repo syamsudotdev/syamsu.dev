@@ -18,7 +18,7 @@ COPY ./package.json pnpm-lock.yaml /app/
 COPY --from=development-dependencies-env /app/node_modules /app/node_modules
 COPY . /app/
 WORKDIR /app
-RUN pnpm build
+RUN pnpm rss-gen && pnpm build
 
 FROM base
 COPY package.json pnpm-lock.yaml ./

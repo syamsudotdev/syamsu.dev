@@ -1,5 +1,5 @@
 import { test } from '@playwright/test';
-import { getPostWithLink } from '~/lib/posts';
+import fs from 'node:fs';
 
 const baseScreenshotDir = 'playwright/screenshots';
 
@@ -23,21 +23,22 @@ test('screenshot posts archive', async ({ page }) => {
   });
 });
 
-test(`screenshot posts`, async ({ context }) => {
-  const posts = await getPostWithLink();
+test('screenshot posts', async ({ context }) => {
+  const filenames = fs.readdirSync('posts');
+  const slugs = filenames.map(f => f.replace(/\.mdx?$/, ''));
 
-  for (const post of posts) {
+  for (const slug of slugs) {
     const page = await context.newPage();
     try {
-      await page.goto(`/posts/${post.link}`);
+      await page.goto(`/posts/${slug}`);
       await page.waitForLoadState('domcontentloaded');
       await page.screenshot({
-        path: `${baseScreenshotDir}/${post.link}.jpeg`,
+        path: `${baseScreenshotDir}/${slug}.jpeg`,
         quality: 100,
         clip: { x: 0, y: 0, width: 600, height: 300 },
       });
     } catch (error) {
-      console.error(`Failed to screenshot ${post.link}:`, error);
+      console.error(`Failed to screenshot ${slug}:`, error);
     } finally {
       await page.close();
     }

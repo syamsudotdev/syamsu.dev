@@ -3,31 +3,52 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --baby-blue: #68bbe3;
-    --blue-grotto: #0e86d4;
-    --blue: #055c9d;
-    --navy-blue: #003060;
-    --off-white: #f5f5f5;
+  html {
+    font-size: 17px;
   }
 
   body {
-    @apply bg-off-white text-navy-blue antialiased;
+    @apply bg-paper text-ink font-body antialiased;
+  }
+
+  ::selection {
+    @apply bg-redline text-white;
+  }
+}
+
+@layer components {
+  .redaction-link {
+    @apply text-redline relative inline-block;
+    text-decoration: none;
+  }
+  .redaction-link::after {
+    content: '';
+    @apply absolute left-0 bottom-0 w-0 h-[2px] bg-redline;
+    transition: width 0.3s ease;
+  }
+  .redaction-link:hover::after {
+    @apply w-full;
+  }
+
+  .section-rule {
+    @apply w-full h-px bg-rule;
+  }
+
+  .page-number {
+    @apply absolute text-[12rem] font-display font-normal text-ink/[0.04] select-none pointer-events-none leading-none;
+  }
+
+  .annotation {
+    @apply font-annotation text-redline text-annotation italic;
+  }
+
+  .nav-link {
+    @apply font-mono text-ui uppercase text-pencil hover:text-ink transition-colors duration-200;
   }
 }
 
 @layer utilities {
-  .swiss-grid {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 24px;
-  }
-
-  .swiss-rule-h {
-    @apply h-[1px] bg-blue;
-  }
-
-  .swiss-rule-v {
-    @apply w-[1px] bg-blue;
+  .drop-cap::first-letter {
+    @apply float-left text-[3.5em] font-display font-normal leading-[0.8] mr-3 mt-1 text-redline;
   }
 }

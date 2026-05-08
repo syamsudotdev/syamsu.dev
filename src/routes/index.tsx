@@ -237,40 +237,32 @@ type ProjectData = {
 function ProjectCard({ data }: { data: ProjectData }) {
   const { title, shortDescription, description, tech, time } = data;
   return (
-    <div className="group border border-gray-200 hover:border-l-8 hover:border-l-blue-grotto transition-all duration-75">
-      <div className="p-8">
-        <div className="mb-6">
-          <h3 className="text-2xl font-bold tracking-tight text-navy-blue uppercase">
+    <div className="py-8 border-b border-rule group">
+      <div className="flex flex-col lg:flex-row lg:gap-12">
+        <div className="lg:w-48 shrink-0 mb-4 lg:mb-0">
+          <span className="font-mono text-ui uppercase text-pencil">{time}</span>
+        </div>
+        <div className="flex-1">
+          <h3 className="font-heading text-heading-lg mb-3 group-hover:text-redline transition-colors">
             {title}
           </h3>
-          <p className="text-blue-grotto font-bold text-sm tracking-widest mt-1">
-            {time}
+          <p className="font-body text-body text-ink/80 mb-4">
+            {shortDescription}
           </p>
-        </div>
-
-        <p className="text-navy-blue text-lg leading-tight mb-6">
-          {shortDescription}
-        </p>
-
-        <div className="space-y-2 mb-6">
-          {description.split('\n').map((line, index) => (
-            <p key={index} className="text-navy-blue flex items-start text-sm">
-              <span className="mr-2">→</span>
-              {line.replace(/^- /, '')}
-            </p>
-          ))}
-        </div>
-
-        <div className="border-t border-gray-100 pt-6">
-          <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs font-bold text-blue-grotto uppercase">
-            {tech
-              .sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()))
-              .map((technology, index) => (
-                <span key={index}>
-                  {technology}
-                  {index < tech.length - 1 && <span className="ml-4">/</span>}
-                </span>
-              ))}
+          <div className="space-y-1 mb-4">
+            {description.split('\n').map((line, index) => (
+              <p key={index} className="text-pencil text-sm flex items-start">
+                <span className="text-redline mr-2">—</span>
+                {line.replace(/^- /, '')}
+              </p>
+            ))}
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {tech.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase())).map((t, i) => (
+              <span key={i} className="font-mono text-[11px] uppercase text-pencil">
+                {t}{i < tech.length - 1 ? ' ·' : ''}
+              </span>
+            ))}
           </div>
         </div>
       </div>
@@ -280,43 +272,36 @@ function ProjectCard({ data }: { data: ProjectData }) {
 
 function LatestPosts({ posts }: { posts: PostDetailResult[] }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+    <div className="space-y-0">
       {posts.map((post) => (
         <Link
           key={post.slug}
           to="/posts/$slug"
           params={{ slug: post.slug }}
-          className="group border-t-2 border-blue pt-6 flex flex-col"
+          className="group block py-6 border-b border-rule"
         >
-          <p className="text-xs font-bold text-blue-grotto uppercase tracking-widest mb-4">
-            {post.date}
-          </p>
-          <h3 className="text-xl font-bold leading-tight text-navy-blue mb-4 group-hover:text-blue transition-colors">
-            {post.title}
-          </h3>
-          <p className="text-navy-blue/80 leading-snug text-sm flex-1 mb-6">
-            {post.short}
-          </p>
-          <div className="text-navy-blue font-bold text-xs uppercase tracking-widest">
-            Read Article →
+          <div className="flex items-start justify-between gap-8">
+            <div className="flex-1">
+              <h3 className="font-heading text-heading-lg mb-2 group-hover:text-redline transition-colors">
+                {post.title}
+              </h3>
+              <p className="text-pencil text-sm line-clamp-2">{post.short}</p>
+            </div>
+            <span className="font-mono text-ui uppercase text-pencil shrink-0 mt-2">
+              {post.date}
+            </span>
           </div>
         </Link>
       ))}
-
       <Link
         to="/posts"
-        className="group border-t-2 border-blue pt-6 flex flex-col justify-between"
+        className="group block py-6 border-b border-rule"
       >
-        <div>
-          <h3 className="text-xl font-bold leading-tight text-navy-blue mb-2">
-            Archive
-          </h3>
-          <p className="text-navy-blue/80 text-sm">
-            Explore the complete collection of technical thoughts and guides.
-          </p>
-        </div>
-        <div className="mt-8 text-navy-blue font-bold text-xs uppercase tracking-widest">
-          View All Posts →
+        <div className="flex items-center justify-between">
+          <span className="font-heading text-heading-lg group-hover:text-redline transition-colors">
+            View all writing
+          </span>
+          <span className="text-redline text-2xl group-hover:translate-x-2 transition-transform">→</span>
         </div>
       </Link>
     </div>
@@ -327,92 +312,80 @@ function HomeComponent() {
   const latestPosts = Route.useLoaderData();
 
   return (
-    <main className="min-h-screen bg-white text-navy-blue font-sans selection:bg-blue selection:text-white">
+    <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6 max-w-7xl mx-auto">
-        <div className="grid grid-cols-12">
-          <div className="col-span-12 lg:col-span-8 space-y-12">
-            <h1 className="text-6xl md:text-8xl font-bold leading-[0.9] tracking-tighter text-navy-blue">
-              FULL STACK
-              <br />
-              ENGINEER
-              <br />
-              & MOBILE
-              <br />
-              DEVELOPER.
+      <section className="relative pt-32 pb-24 px-6">
+        <div className="max-w-content mx-auto relative">
+          <span className="page-number -left-4 top-0">01</span>
+          <div className="relative z-10 max-w-prose mx-auto">
+            <h1 className="font-display text-display mb-8">
+              Mochamad Noor<br />Syamsu
             </h1>
-
-            <p className="text-xl md:text-2xl font-medium max-w-2xl leading-tight">
-              Crafting robust solutions with {YEARS_EXP} years of expertise in
-              Kotlin, TypeScript, and modern ecosystems. Functional simplicity
-              meets technical precision.
+            <p className="font-body text-body text-ink/80 max-w-md mb-8">
+              Software engineer who writes about building things.
+              {' '}{YEARS_EXP} years crafting with Kotlin, TypeScript,
+              and modern ecosystems.
             </p>
-
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href="#works"
-                className="px-8 py-4 bg-navy-blue text-white hover:bg-blue transition-colors font-bold uppercase tracking-widest text-sm text-center"
-              >
-                View Portfolio
+            <div className="flex gap-6">
+              <a href="#works" className="redaction-link font-mono text-ui uppercase">
+                View work
               </a>
-              <Link
-                to="/posts"
-                className="px-8 py-4 border-2 border-navy-blue text-navy-blue hover:bg-navy-blue hover:text-white transition-all font-bold uppercase tracking-widest text-sm text-center"
-              >
-                Read Notes
+              <Link to="/posts" className="redaction-link font-mono text-ui uppercase">
+                Read writing
               </Link>
+            </div>
+          </div>
+          <span className="annotation hidden lg:block absolute right-8 top-12 -rotate-3">
+            ← hello
+          </span>
+        </div>
+      </section>
+
+      <div className="section-rule max-w-content mx-auto" />
+
+      {/* Latest Writing */}
+      <section className="relative py-20 px-6">
+        <div className="max-w-content mx-auto relative">
+          <span className="page-number -left-4 top-0">02</span>
+          <div className="relative z-10 max-w-prose mx-auto">
+            <h2 className="font-mono text-ui uppercase tracking-widest text-pencil mb-10">
+              Recent Writing
+            </h2>
+            <LatestPosts posts={latestPosts} />
+          </div>
+        </div>
+      </section>
+
+      <div className="section-rule max-w-content mx-auto" />
+
+      {/* Projects */}
+      <section id="works" className="relative py-20 px-6">
+        <div className="max-w-content mx-auto relative">
+          <span className="page-number -left-4 top-0">03</span>
+          <div className="relative z-10 max-w-content mx-auto">
+            <h2 className="font-mono text-ui uppercase tracking-widest text-pencil mb-10">
+              Projects
+            </h2>
+            <div>
+              {PROJECTS.map((data) => (
+                <ProjectCard key={`${data.title}-${data.time}`} data={data} />
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Latest Posts */}
-      <section className="py-24 px-6 max-w-7xl mx-auto">
-        <div className="mb-16">
-          <h2 className="text-4xl font-bold uppercase tracking-tight mb-4">
-            Latest Posts
-          </h2>
-          <div className="w-full border-b-4 border-blue" />
-        </div>
-        <LatestPosts posts={latestPosts} />
-      </section>
+      <div className="section-rule max-w-content mx-auto" />
 
-      {/* Featured Projects */}
-      <section id="works" className="py-24 px-6 max-w-7xl mx-auto">
-        <div className="mb-16">
-          <h2 className="text-4xl font-bold uppercase tracking-tight mb-4">
-            Featured Projects
-          </h2>
-          <div className="w-full border-b-4 border-blue" />
-        </div>
-
-        <div className="grid grid-cols-1 gap-8">
-          {PROJECTS.map((data) => (
-            <ProjectCard key={`${data.title}-${data.time}`} data={data} />
-          ))}
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about-me" className="py-24 px-6 max-w-7xl mx-auto">
-        <div className="mb-16">
-          <h2 className="text-4xl font-bold uppercase tracking-tight mb-4 text-navy-blue">
-            About
-          </h2>
-          <div className="w-full border-b-4 border-blue" />
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          <div className="lg:col-span-4">
-            <h3 className="text-3xl font-bold leading-none uppercase">
-              Sam
-              <br />
-              Syamsu
-            </h3>
-          </div>
-
-          <div className="lg:col-span-8 space-y-8">
-            <div className="space-y-6 text-lg leading-snug">
+      {/* About */}
+      <section id="about-me" className="relative py-20 px-6">
+        <div className="max-w-content mx-auto relative">
+          <span className="page-number -left-4 top-0">04</span>
+          <div className="relative z-10 max-w-prose mx-auto">
+            <h2 className="font-mono text-ui uppercase tracking-widest text-pencil mb-10">
+              About
+            </h2>
+            <div className="space-y-6 font-body text-body">
               <p>
                 I am a Full Stack Engineer specializing in Android and web
                 development. My methodology prioritizes clean architecture,
@@ -430,30 +403,21 @@ function HomeComponent() {
                 functional.
               </p>
             </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8 border-t border-gray-100">
-              {[
-                { title: 'Development', desc: 'Full-stack systems' },
-                { title: 'Mobile', desc: 'Native Kotlin' },
-                { title: 'Innovation', desc: 'Modern stacks' },
-                { title: 'Collaboration', desc: 'Team leadership' },
-              ].map((item, i) => (
-                <div key={i} className="space-y-2">
-                  <div className="text-blue-grotto font-black">■</div>
-                  <h4 className="font-bold uppercase text-sm">{item.title}</h4>
-                  <p className="text-xs text-navy-blue/70">{item.desc}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="flex flex-wrap gap-x-6 gap-y-2 pt-8 text-xs font-bold uppercase tracking-widest text-blue-grotto">
-              {['Kotlin', 'TypeScript', 'NextJS', 'Firebase', 'Android', 'ReactJS'].map(
-                (skill) => (
-                  <span key={skill}>→ {skill}</span>
-                )
-              )}
+            <div className="mt-12 pt-8 border-t border-rule">
+              <div className="flex flex-wrap gap-x-6 gap-y-2 font-mono text-[11px] uppercase text-pencil">
+                {['Kotlin', 'TypeScript', 'NextJS', 'Firebase', 'Android', 'ReactJS'].map(
+                  (skill) => (
+                    <span key={skill} className="flex items-center gap-2">
+                      <span className="text-redline">→</span> {skill}
+                    </span>
+                  )
+                )}
+              </div>
             </div>
           </div>
+          <span className="annotation hidden lg:block absolute right-8 top-16 rotate-2">
+            proud of this
+          </span>
         </div>
       </section>
     </main>

@@ -9,13 +9,13 @@ export const Route = createFileRoute('/posts/')({
   },
   head: () => ({
     meta: [
-      { title: 'syamsu.dev - Posts' },
+      { title: 'Writing — syamsu.dev' },
       {
         name: 'description',
         content: 'Mochamad Noor Syamsu Web Homepage - Posts',
       },
       ...buildOpenGraphTwitterMeta({
-        title: 'syamsu.dev - Posts',
+        title: 'Writing — syamsu.dev',
         description: 'Mochamad Noor Syamsu Web Homepage - Posts',
         imagePath: 'posts.jpeg',
       }),
@@ -28,41 +28,39 @@ function PostsComponent() {
   const { posts } = Route.useLoaderData();
 
   return (
-    <main className="min-h-screen bg-white">
-      {/* Header Section */}
-      <section className="pt-20 pb-10 px-6">
-        <div className="max-w-6xl mx-auto border-b-8 border-navy-blue pb-4">
-          <h1 className="text-7xl md:text-8xl font-black text-navy-blue uppercase tracking-tighter">
-            All Posts
+    <main className="min-h-screen bg-paper">
+      <section className="pt-24 pb-8 px-6">
+        <div className="max-w-prose mx-auto">
+          <h1 className="font-display text-display mb-4">
+            Writing
           </h1>
+          <p className="text-pencil font-body text-body">
+            Technical thoughts, guides, and notes on building software.
+          </p>
         </div>
       </section>
 
-      {/* Posts List Section */}
-      <section className="pb-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col">
-            {posts.map((post) => (
-              <Link
-                key={post.link}
-                to="/posts/$slug"
-                params={{ slug: post.link }}
-                className="group flex items-center justify-between py-6 border-b border-gray-200 transition-colors"
-              >
-                <div className="flex items-center gap-8 md:gap-16 flex-1">
-                  <span className="font-mono text-gray-500 tabular-nums text-sm md:text-base whitespace-nowrap">
-                    {post.date}
-                  </span>
-                  <h2 className="text-xl md:text-2xl font-bold text-navy-blue group-hover:text-blue-grotto transition-colors">
-                    {post.title}
-                  </h2>
-                </div>
-                <span className="text-2xl md:text-3xl text-navy-blue group-hover:translate-x-2 transition-transform duration-200 ease-out">
-                  →
-                </span>
-              </Link>
-            ))}
-          </div>
+      <div className="section-rule max-w-prose mx-auto" />
+
+      <section className="py-8 px-6">
+        <div className="max-w-prose mx-auto">
+          {posts.map((post) => (
+            <Link
+              key={post.link}
+              to="/posts/$slug"
+              params={{ slug: post.link }}
+              className="group flex items-start justify-between py-6 border-b border-rule gap-8"
+            >
+              <div className="flex-1">
+                <h2 className="font-heading text-heading-lg group-hover:text-redline transition-colors">
+                  {post.title}
+                </h2>
+              </div>
+              <span className="font-mono text-ui uppercase text-pencil shrink-0 mt-1.5">
+                {post.date}
+              </span>
+            </Link>
+          ))}
         </div>
       </section>
     </main>

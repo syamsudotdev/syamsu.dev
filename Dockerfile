@@ -4,12 +4,12 @@ WORKDIR /app
 COPY . /app
 
 FROM base AS development-dependencies-env
-COPY ./package.json pnpm-lock.yaml /app/
+COPY ./package.json pnpm-lock.yaml pnpm-workspace.yaml /app/
 WORKDIR /app
 RUN pnpm i --frozen-lockfile
 
 FROM base AS production-dependencies-env
-COPY package.json pnpm-lock.yaml /app/
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml /app/
 WORKDIR /app
 RUN pnpm i --prod --frozen-lockfile
 

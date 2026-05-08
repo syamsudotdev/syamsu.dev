@@ -1,13 +1,12 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { tanstackStart } from '@tanstack/react-start/plugin/vite';
-import autoprefixer from 'autoprefixer';
-import tailwindcss from 'tailwindcss';
+import postcss from '@tailwindcss/postcss';
 
 export default defineConfig({
   css: {
     postcss: {
-      plugins: [tailwindcss, autoprefixer() as any],
+      plugins: [postcss],
     },
   },
   resolve: {

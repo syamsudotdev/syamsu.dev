@@ -1,6 +1,99 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@theme {
+  --color-paper: #ffffff;
+  --color-ink: #111111;
+  --color-pencil: #999999;
+  --color-redline: #e11d48;
+  --color-redline-wash: #fff1f2;
+  --color-rule: #e5e5e5;
+  --color-bleed: #f5f5f5;
+
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-heading: 'Instrument Serif', Georgia, serif;
+  --font-body: 'Newsreader', Georgia, serif;
+  --font-mono: 'Space Mono', monospace;
+  --font-annotation: 'Caveat', cursive;
+
+  --text-display: 5rem;
+  --text-display--line-height: 1;
+  --text-display--letter-spacing: -0.02em;
+  --text-display--font-weight: 400;
+  --text-heading-lg: 2.25rem;
+  --text-heading-lg--line-height: 1.15;
+  --text-heading-lg--letter-spacing: -0.01em;
+  --text-heading-lg--font-weight: 400;
+  --text-heading: 1.625rem;
+  --text-heading--line-height: 1.2;
+  --text-heading--letter-spacing: -0.01em;
+  --text-heading--font-weight: 400;
+  --text-body: 1.0625rem;
+  --text-body--line-height: 1.75;
+  --text-body--font-weight: 400;
+  --text-ui: 0.8125rem;
+  --text-ui--line-height: 1.4;
+  --text-ui--letter-spacing: 0.05em;
+  --text-ui--font-weight: 400;
+  --text-annotation: 1rem;
+  --text-annotation--line-height: 1.3;
+  --text-annotation--font-weight: 400;
+
+  --container-prose: 640px;
+  --container-content: 1080px;
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility redaction-link {
+  @apply text-redline relative inline-block;
+  text-decoration: none;
+  &::after {
+    content: '';
+    @apply absolute left-0 bottom-0 w-0 h-[2px] bg-redline;
+    transition: width 0.3s ease;
+  }
+  &:hover::after {
+    @apply w-full;
+  }
+}
+
+@utility section-rule {
+  @apply w-full h-px bg-rule;
+}
+
+@utility page-number {
+  @apply absolute text-[12rem] font-display font-normal text-ink/4 select-none pointer-events-none leading-none;
+}
+
+@utility annotation {
+  @apply font-annotation text-redline text-annotation italic;
+}
+
+@utility nav-link {
+  @apply font-mono text-ui uppercase text-pencil hover:text-ink transition-colors duration-200;
+}
+
+@utility drop-cap {
+  &::first-letter {
+    @apply float-left text-[3.5em] font-display font-normal leading-[0.8] mr-3 mt-1 text-redline;
+  }
+}
 
 @layer base {
   html {
@@ -13,42 +106,5 @@
 
   ::selection {
     @apply bg-redline text-white;
-  }
-}
-
-@layer components {
-  .redaction-link {
-    @apply text-redline relative inline-block;
-    text-decoration: none;
-  }
-  .redaction-link::after {
-    content: '';
-    @apply absolute left-0 bottom-0 w-0 h-[2px] bg-redline;
-    transition: width 0.3s ease;
-  }
-  .redaction-link:hover::after {
-    @apply w-full;
-  }
-
-  .section-rule {
-    @apply w-full h-px bg-rule;
-  }
-
-  .page-number {
-    @apply absolute text-[12rem] font-display font-normal text-ink/[0.04] select-none pointer-events-none leading-none;
-  }
-
-  .annotation {
-    @apply font-annotation text-redline text-annotation italic;
-  }
-
-  .nav-link {
-    @apply font-mono text-ui uppercase text-pencil hover:text-ink transition-colors duration-200;
-  }
-}
-
-@layer utilities {
-  .drop-cap::first-letter {
-    @apply float-left text-[3.5em] font-display font-normal leading-[0.8] mr-3 mt-1 text-redline;
   }
 }

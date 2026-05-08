@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { buildOpenGraphTwitterMeta } from '~/utils/seo';
 import { getLatestPosts, PostDetailResult } from '~/lib/posts';
+import { useReveal } from '~/hooks/use-reveal';
 
 export const Route = createFileRoute('/')({
   loader: () => (getLatestPosts as any)(),
@@ -234,11 +236,41 @@ type ProjectData = {
   time: string;
 };
 
+const MAX_TAGS = 5;
+const FEATURED_COUNT = 3;
+
+function RevealSection({
+  children,
+  className,
+  delay = 0,
+  ...props
+}: React.ComponentPropsWithoutRef<'section'> & { delay?: number }) {
+  const { ref, visible } = useReveal();
+  return (
+    <section
+      ref={ref}
+      className={className}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? 'translateY(0)' : 'translateY(24px)',
+        transition: `opacity 0.7s ease ${delay}s, transform 0.7s ease ${delay}s`,
+      }}
+      {...props}
+    >
+      {children}
+    </section>
+  );
+}
+
 function ProjectCard({ data }: { data: ProjectData }) {
   const { title, shortDescription, description, tech, time } = data;
+  const sortedTech = [...tech].sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+  const visibleTech = sortedTech.slice(0, MAX_TAGS);
+  const hiddenCount = sortedTech.length - MAX_TAGS;
+
   return (
-    <div className="py-8 border-b border-rule group">
-      <div className="flex flex-col lg:flex-row lg:gap-12">
+    <div className="py-8 border-b border-rule group border-l-2 border-l-transparent hover:border-l-redline hover:bg-bleed transition-all duration-200">
+      <div className="flex flex-col lg:flex-row lg:gap-12 transition-transform duration-200 group-hover:translate-x-4">
         <div className="lg:w-48 shrink-0 mb-4 lg:mb-0">
           <span className="font-mono text-ui uppercase text-pencil">{time}</span>
         </div>
@@ -258,11 +290,16 @@ function ProjectCard({ data }: { data: ProjectData }) {
             ))}
           </div>
           <div className="flex flex-wrap gap-2">
-            {tech.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase())).map((t, i) => (
+            {visibleTech.map((t, i) => (
               <span key={i} className="font-mono text-[11px] uppercase text-pencil">
-                {t}{i < tech.length - 1 ? ' ·' : ''}
+                {t}{i < visibleTech.length - 1 ? ' ·' : ''}
               </span>
             ))}
+            {hiddenCount > 0 && (
+              <span className="font-mono text-[11px] uppercase text-redline">
+                +{hiddenCount}
+              </span>
+            )}
           </div>
         </div>
       </div>
@@ -278,9 +315,9 @@ function LatestPosts({ posts }: { posts: PostDetailResult[] }) {
           key={post.slug}
           to="/posts/$slug"
           params={{ slug: post.slug }}
-          className="group block py-6 border-b border-rule"
+          className="group block py-6 border-b border-rule border-l-2 border-l-transparent hover:border-l-redline hover:bg-bleed transition-all duration-200"
         >
-          <div className="flex items-start justify-between gap-8">
+          <div className="flex items-start justify-between gap-8 transition-transform duration-200 group-hover:translate-x-4">
             <div className="flex-1">
               <h3 className="font-heading text-heading-lg mb-2 group-hover:text-redline transition-colors">
                 {post.title}
@@ -295,9 +332,9 @@ function LatestPosts({ posts }: { posts: PostDetailResult[] }) {
       ))}
       <Link
         to="/posts"
-        className="group block py-6 border-b border-rule"
+        className="group block py-6 border-b border-rule border-l-2 border-l-transparent hover:border-l-redline hover:bg-bleed transition-all duration-200"
       >
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between transition-transform duration-200 group-hover:translate-x-4">
           <span className="font-heading text-heading-lg group-hover:text-redline transition-colors">
             View all writing
           </span>
@@ -308,16 +345,46 @@ function LatestPosts({ posts }: { posts: PostDetailResult[] }) {
   );
 }
 
+function ProjectsSection() {
+  const [showAll, setShowAll] = useState(false);
+  const featured = PROJECTS.slice(0, FEATURED_COUNT);
+  const rest = PROJECTS.slice(FEATURED_COUNT);
+
+  return (
+    <div>
+      {featured.map((data) => (
+        <ProjectCard key={`${data.title}-${data.time}`} data={data} />
+      ))}
+      {rest.length > 0 && (
+        showAll ? (
+          rest.map((data) => (
+            <ProjectCard key={`${data.title}-${data.time}`} data={data} />
+          ))
+        ) : (
+          <button
+            onClick={() => setShowAll(true)}
+            className="w-full py-8 border-b border-rule font-mono text-ui uppercase text-pencil
+              hover:text-ink transition-colors flex items-center justify-between cursor-pointer"
+          >
+            <span>View {rest.length} more projects</span>
+            <span className="text-redline">↓</span>
+          </button>
+        )
+      )}
+    </div>
+  );
+}
+
 function HomeComponent() {
   const latestPosts = Route.useLoaderData();
 
   return (
     <main className="min-h-screen">
-      {/* Hero Section */}
+      {/* Hero Section — R3: staggered entrance */}
       <section className="relative pt-32 pb-24 px-6">
         <div className="max-w-content mx-auto relative">
-          <span className="page-number -left-4 top-0">01</span>
-          <div className="relative z-10 max-w-prose mx-auto">
+          <span className="page-number -left-4 top-0 hero-fade" style={{ animationDelay: '0.8s' }}>01</span>
+          <div className="relative z-10 max-w-prose mx-auto hero-stagger">
             <h1 className="font-display text-display mb-8">
               Mochamad Noor<br />Syamsu
             </h1>
@@ -335,7 +402,7 @@ function HomeComponent() {
               </Link>
             </div>
           </div>
-          <span className="annotation hidden lg:block absolute right-8 top-12 -rotate-3">
+          <span className="annotation hidden lg:block absolute right-8 top-12 -rotate-3 hero-fade" style={{ animationDelay: '1s' }}>
             ← hello
           </span>
         </div>
@@ -343,8 +410,8 @@ function HomeComponent() {
 
       <div className="section-rule max-w-content mx-auto" />
 
-      {/* Latest Writing */}
-      <section className="relative py-20 px-6">
+      {/* Latest Writing — R1: scroll reveal */}
+      <RevealSection className="relative py-20 px-6">
         <div className="max-w-content mx-auto relative">
           <span className="page-number -left-4 top-0">02</span>
           <div className="relative z-10 max-w-prose mx-auto">
@@ -354,31 +421,27 @@ function HomeComponent() {
             <LatestPosts posts={latestPosts} />
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       <div className="section-rule max-w-content mx-auto" />
 
-      {/* Projects */}
-      <section id="works" className="relative py-20 px-6">
+      {/* Projects — R1: scroll reveal, R4: collapse */}
+      <RevealSection id="works" className="relative py-20 px-6">
         <div className="max-w-content mx-auto relative">
           <span className="page-number -left-4 top-0">03</span>
           <div className="relative z-10 max-w-content mx-auto">
             <h2 className="font-mono text-ui uppercase tracking-widest text-pencil mb-10">
               Projects
             </h2>
-            <div>
-              {PROJECTS.map((data) => (
-                <ProjectCard key={`${data.title}-${data.time}`} data={data} />
-              ))}
-            </div>
+            <ProjectsSection />
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       <div className="section-rule max-w-content mx-auto" />
 
-      {/* About */}
-      <section id="about-me" className="relative py-20 px-6">
+      {/* About — R1: scroll reveal */}
+      <RevealSection id="about-me" className="relative py-20 px-6">
         <div className="max-w-content mx-auto relative">
           <span className="page-number -left-4 top-0">04</span>
           <div className="relative z-10 max-w-prose mx-auto">
@@ -419,7 +482,7 @@ function HomeComponent() {
             proud of this
           </span>
         </div>
-      </section>
+      </RevealSection>
     </main>
   );
 }

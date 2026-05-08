@@ -85,6 +85,33 @@
   @apply font-annotation text-redline text-annotation italic;
 }
 
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@utility hero-stagger {
+  & > * {
+    opacity: 0;
+    animation: hero-rise 0.8s ease forwards;
+  }
+  & > *:nth-child(1) { animation-delay: 0.1s; }
+  & > *:nth-child(2) { animation-delay: 0.25s; }
+  & > *:nth-child(3) { animation-delay: 0.4s; }
+  & > *:nth-child(4) { animation-delay: 0.55s; }
+}
+
+@utility hero-fade {
+  opacity: 0;
+  animation: hero-rise 0.8s ease forwards;
+}
+
 @utility nav-link {
   @apply font-mono text-ui uppercase text-pencil hover:text-ink transition-colors duration-200;
 }

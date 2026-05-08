@@ -12,6 +12,9 @@ function DesktopNav() {
       <Link to="/" hash="works" className="nav-link">
         Work
       </Link>
+      <a href="mailto:hi@syamsu.dev" className="nav-link">
+        Contact
+      </a>
     </nav>
   );
 }
@@ -33,6 +36,9 @@ function MobileNav() {
           <Link to="/" hash="works" className="nav-link block px-5 py-3">
             Work
           </Link>
+          <a href="mailto:hi@syamsu.dev" className="nav-link block px-5 py-3">
+            Contact
+          </a>
         </div>
       </details>
     </nav>

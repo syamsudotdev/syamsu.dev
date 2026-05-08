@@ -1,20 +1,16 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { tanstackStart } from '@tanstack/react-start/plugin/vite';
-import postcss from '@tailwindcss/postcss';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  css: {
-    postcss: {
-      plugins: [postcss],
-    },
-  },
   resolve: {
     alias: {
       '~': '/src',
     },
   },
   plugins: [
+    tailwindcss(),
     tanstackStart({
       prerender: {
         enabled: true,

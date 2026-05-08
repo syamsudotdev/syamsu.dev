@@ -7,7 +7,6 @@ node_modules
 *.tsbuildinfo
 *.tar.gz
 /public/rss.xml
-/public/meta/*
 /test-results/
 /playwright-report/
 /blob-report/

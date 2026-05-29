@@ -50,6 +50,7 @@ export default function Header() {
     <header className="flex fixed top-0 w-screen border-b border-rule bg-paper text-ink z-50 px-6">
       <Link className="flex items-center py-3" to="/">
         <span className="font-mono text-ui uppercase tracking-widest font-bold text-ink">syamsu.dev</span>
+        <span className="caret ml-[3px] h-[0.95em]" aria-hidden="true" />
       </Link>
       <MobileNav />
       <DesktopNav />

@@ -17,6 +17,12 @@ export default defineConfig({
         crawlLinks: true,
         autoSubfolderIndex: false,
       },
+      pages: [
+        {
+          path: '/404',
+          prerender: { enabled: true, outputPath: '/404.html' },
+        },
+      ],
     }),
     react(),
   ],

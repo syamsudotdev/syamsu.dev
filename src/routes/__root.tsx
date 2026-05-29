@@ -6,6 +6,7 @@ import {
   Scripts,
 } from '@tanstack/react-router';
 import Header from '~/components/header';
+import NotFound from '~/components/not-found';
 import '~/styles/app.css';
 
 export const Route = createRootRoute({
@@ -14,21 +15,10 @@ export const Route = createRootRoute({
       { charSet: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
     ],
-    links: [
-      { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-      {
-        rel: 'preconnect',
-        href: 'https://fonts.gstatic.com',
-        crossOrigin: 'anonymous',
-      },
-      {
-        rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Caveat:wght@400&family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;1,6..72,400&family=Space+Mono:wght@400;700&display=swap',
-      },
-    ],
   }),
   component: RootComponent,
   errorComponent: ErrorBoundary,
+  notFoundComponent: NotFound,
 });
 
 function RootComponent() {

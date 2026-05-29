@@ -1,5 +1,5 @@
 FROM node:22-alpine AS base
-RUN npm i -g pnpm
+RUN npm i -g pnpm@11
 WORKDIR /app
 COPY . /app
 

@@ -2,6 +2,7 @@
   "name": "react-router-ssg",
   "private": true,
   "type": "module",
+  "packageManager": "pnpm@11.0.8",
   "scripts": {
     "rss-gen": "tsx rss-generator.ts",
     "build": "vite build",

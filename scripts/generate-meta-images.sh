@@ -1,11 +1,11 @@
 #!/usr/bin/env sh
 
-# Delete file if exists
+# Clean old screenshots
 rm -rf playwright/screenshots
-rm -rf public/meta/*
 
-# Run playwright tests
-pnpm exec playwright test tests/screenshot.spec.ts
+# Run OG image generation (no dev server needed)
+pnpm exec playwright test tests/og-images.spec.ts
 
-# Move screenshots to meta-images directory
+# Move screenshots to public/meta
+mkdir -p public/meta
 mv playwright/screenshots/* public/meta/

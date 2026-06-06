@@ -23,10 +23,16 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
+  webServer: process.env.PREVIEW ? {
+    command: 'pnpm build && pnpm start',
+    port: 3000,
+    reuseExistingServer: !process.env.CI,
+    timeout: 120_000,
+  } : undefined,
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: 'http://localhost:5173',
+    baseURL: process.env.PREVIEW ? 'http://localhost:3000' : 'http://localhost:5173',
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },

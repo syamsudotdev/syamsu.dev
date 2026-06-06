@@ -1,9 +1,12 @@
 import fs from 'node:fs/promises';
 import { createServerFn } from '@tanstack/react-start';
+import { staticFunctionMiddleware } from '@tanstack/start-static-server-functions';
 import { remark } from 'remark';
 import stripMarkdown from 'strip-markdown';
 
-export const getPostFilenames = createServerFn({ method: 'GET' }).handler(
+export const getPostFilenames = createServerFn({ method: 'GET' })
+  .middleware([staticFunctionMiddleware])
+  .handler(
   async () => {
     return await fs.readdir('posts');
   }
@@ -22,7 +25,9 @@ export type PostDetailResult = {
   slug: string;
 };
 
-export const getPostWithLink = createServerFn({ method: 'GET' }).handler(
+export const getPostWithLink = createServerFn({ method: 'GET' })
+  .middleware([staticFunctionMiddleware])
+  .handler(
   async () => {
     const filenames = await getPostFilenames();
     const postsTitlePromise = filenames.map(async filename => {
@@ -47,7 +52,9 @@ export const getPostWithLink = createServerFn({ method: 'GET' }).handler(
   }
 );
 
-export const getAllPosts = createServerFn({ method: 'GET' }).handler(
+export const getAllPosts = createServerFn({ method: 'GET' })
+  .middleware([staticFunctionMiddleware])
+  .handler(
   async () => {
     const filenames = await getPostFilenames();
     const posts = await Promise.all(
@@ -92,7 +99,9 @@ export const getAllPosts = createServerFn({ method: 'GET' }).handler(
   }
 );
 
-export const getLatestPosts = createServerFn({ method: 'GET' }).handler(
+export const getLatestPosts = createServerFn({ method: 'GET' })
+  .middleware([staticFunctionMiddleware])
+  .handler(
   async () => {
     const filenames = await getPostFilenames();
     const posts = await Promise.all(

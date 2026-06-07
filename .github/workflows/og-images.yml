@@ -7,6 +7,7 @@ on:
       - 'posts/**'
       - 'scripts/og-template.html'
       - 'tests/og-images.spec.ts'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -15,22 +16,33 @@ permissions:
 jobs:
   generate-og-images:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    concurrency:
+      group: og-images-${{ github.ref_name }}
+      cancel-in-progress: true
+
+    env:
+      CI: 'true'
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 11
+      - uses: pnpm/action-setup@f40ffcd9367d9f12939873eb1018b921a783ffaa # v4
+        name: Install pnpm
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
-          node-version: 22
-          cache: pnpm
+          node-version: '22'
+          cache: 'pnpm'
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: pw-browsers-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            pw-browsers-${{ runner.os }}-
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -46,7 +58,7 @@ jobs:
           mv playwright/screenshots/* public/meta/
 
       - name: Create Pull Request with new OG images
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request@22a9089034f40e5a961c8808d113e2c98fb63676 # v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: 'chore: regenerate OG images'

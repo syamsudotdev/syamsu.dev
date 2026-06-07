@@ -1,0 +1,61 @@
+name: Generate OG Images
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'posts/**'
+      - 'scripts/og-template.html'
+      - 'tests/og-images.spec.ts'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  generate-og-images:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright browsers
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Generate OG images
+        run: |
+          rm -rf playwright/screenshots
+          pnpm exec playwright test tests/og-images.spec.ts
+          mkdir -p public/meta
+          mv playwright/screenshots/* public/meta/
+
+      - name: Create Pull Request with new OG images
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'chore: regenerate OG images'
+          title: 'chore: regenerate OG images'
+          body: |
+            Auto-generated OG images for new or updated posts.
+
+            Triggered by push to `main`.
+          branch: chore/regenerate-og-images
+          delete-branch: true
+          add-paths: |
+            public/meta/*.jpeg

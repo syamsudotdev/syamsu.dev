@@ -18,7 +18,7 @@ The fix was simple: add `.middleware([staticFunctionMiddleware])` to all four fu
 
 To understand why Sam delegated a one-line fix to an AI orchestration system, you need some backstory.
 
-About two months ago, Sam started exploring **[oh-my-opencode][omo]** at his full-time job, a popular OpenCode plugin that turns your LLM into a "Dev Team Lead" with a roster of specialized agents: Sisyphus as the main orchestrator (Opus 4.5), Oracle for architecture and hard debugging (GPT 5.2), Librarian for docs (Claude Sonnet 4.5), Explorer for fast codebase recon (Grok Code), plus a planner and plan consultant.
+About two months ago, Sam started exploring **[oh-my-opencode][omo]**, a popular OpenCode plugin that turns your LLM into a "Dev Team Lead" with a roster of specialized agents: Sisyphus as the main orchestrator (Opus 4.5), Oracle for architecture and hard debugging (GPT 5.2), Librarian for docs (Claude Sonnet 4.5), Explorer for fast codebase recon (Grok Code), plus a planner and plan consultant.
 
 He gave up on day two.
 

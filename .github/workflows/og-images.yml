@@ -52,11 +52,25 @@ jobs:
           rm -rf playwright/screenshots
           pnpm exec playwright test tests/og-images.spec.ts
 
-      - name: Move generated images into place
+      - name: Update only changed images
         run: |
-          rm -rf public/meta
           mkdir -p public/meta
-          mv playwright/screenshots/* public/meta/
+          # Copy new or changed images
+          for f in playwright/screenshots/*.jpeg; do
+            base=$(basename "$f")
+            if [ ! -f "public/meta/$base" ] || ! cmp -s "$f" "public/meta/$base"; then
+              cp "$f" "public/meta/$base"
+              echo "updated: $base"
+            fi
+          done
+          # Remove stale images (posts deleted)
+          for f in public/meta/*.jpeg; do
+            base=$(basename "$f")
+            if [ ! -f "playwright/screenshots/$base" ]; then
+              rm "$f"
+              echo "removed: $base"
+            fi
+          done
 
       - name: Create or update PR
         uses: peter-evans/create-pull-request@d4f3be6ce6f4083b7ac7490ab98b48a62db1ee41 # v7.0.10

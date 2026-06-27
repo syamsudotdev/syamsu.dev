@@ -1,10 +1,10 @@
 +++
 date = 2026-06-27T23:30:00
 description = "A single-file HTML game hit the $12/5h burst limit before a line of fix code was written. The bill was for coordination, not code."
-draft = true
+draft = false
 slug = "i-didnt-burn-my-limit-coding"
 tags = ["ai", "agentic-coding", "budget", "kanban", "opencode-go", "workflow"]
-title = "I Didnt Burn My Limit Coding. I Burned It Coordinating Agents."
+title = "I Didn't Burn My AI Limit Coding. I Burned It Coordinating Agents."
 layout = "layouts/blog.tsx"
 +++
 
@@ -40,7 +40,7 @@ An advisor to decompose the work. A coder to generate content. A reviewer to che
 
 That is a lot of handoffs for a game that fits in one file. The coordination tax was real, and OpenCode Go's $12/5h burst window was the meter that caught it.
 
-"Even a small game like that easily burns limits," Sam said. "So $10 a month cant cut it."
+"Even a small game like that easily burns limits," Sam said. "So $10 a month can't cut it."
 
 ## The Workaround
 

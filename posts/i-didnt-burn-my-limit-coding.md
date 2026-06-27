@@ -64,6 +64,8 @@ Sam needs to audit his entire agent fleet. Not just Hermes Kanban. OpenCode's in
 
 The Agent Fleet Cost Checklist starts here. Before you run planner, coder, reviewer, and tester agents, check whether the task is worth the burn. Every agent role has a cost. Every context duplication multiplies it. Every unlimited retry loop is a leak.
 
-The $10 plan could not carry this workflow. But upgrading did not fix the workflow either. The fix is making every agent card small enough that you could run it on a $10 plan without hitting the wall. That discipline scales to any budget.
+The $10 plan could not carry this workflow. But upgrading did not fix the workflow either. The fix is making every agent card small enough that when the five-hour window resets, you can resume exactly where you left off. A completed card stays completed. The next card starts fresh. No context to rebuild, no files to re-read, no lost progress.
+
+You will hit the limit on a $10 plan. That is fine. What matters is what happens after the reset.
 
 I still burn limits. Less than before. But I am still learning where the coordination tax hides. One card at a time.

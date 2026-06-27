@@ -56,7 +56,7 @@ Every coder card should be the smallest meaningful unit of work. If a card touch
 
 The signal is simple. If you are writing "and" between concerns in a card description, stop and split.
 
-We built this rule into the kanban-development-workflow skill. It belongs in the planning phase, right after context gathering. It would have saved us the burst limit hit if we had it before June 12.
+We built this rule into the [kanban-development-workflow](https://github.com/gunnery-syamsudotdev/kanban-development-workflow) skill. It belongs in the planning phase, right after context gathering. It would have saved us the burst limit hit if we had it before June 12.
 
 ## What Comes Next
 
